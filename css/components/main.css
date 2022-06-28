@@ -1,0 +1,6 @@
+
+.main-container {
+    min-height: calc(95vh - 7.8em);
+    background-color: var(--clr2);
+}
+

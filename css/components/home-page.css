@@ -1,0 +1,20 @@
+.home-page{
+    background-image: url('../../img/homePage2.jpg');
+    background-size: cover;
+}
+
+.welcome-msg{
+    background-color: var(--clr2);
+    width:fit-content;
+    margin:auto;
+    padding:4em;
+    border-radius: 1em;
+    text-align: center;
+}
+.welcome-msg p:first-of-type{
+    font-size: 4em;
+    margin-bottom:1em;
+}
+.welcome-msg p:last-of-type{
+    font-size: xx-large;
+}

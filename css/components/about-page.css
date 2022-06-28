@@ -1,0 +1,24 @@
+.about-page{
+    background-image: url('../../img/about1.jpg');
+    background-size: cover;
+    background-position: top left;
+}
+
+.about-msg{
+    background-color: var(--clr6);
+    height: 50%;
+    width:70%;
+    border-radius: 0.5em;
+    padding: 1em;
+}
+
+.about-msg p:first-of-type{
+    font-size:3em;
+}
+
+.about-msg p:not(:first-of-type){
+    margin-bottom:0.5em;
+}
+.about-msg h3{
+    margin-bottom:0.5em;
+}

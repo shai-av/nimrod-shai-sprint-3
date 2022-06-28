@@ -1,0 +1,5 @@
+
+.main-layout {
+    max-width: calc(100% - 5em);
+    margin: 0 auto;
+}
