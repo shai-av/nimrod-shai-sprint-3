@@ -11,20 +11,20 @@ export default {
     <div class="flex">
     <mail-side-filter @getFilter="setFilterType"/>
     <mail-details v-if="selectedMail" :mail="selectedMail"/>
-    <mail-list v-else :mails="mailsToShow" @select="setSelectedMail"/>
+    <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" @removeMailLocal="removeFromDisplay"/>
    </div>
  </section>
 `,
     data() {
         return {
             mails: null,
-            selectedMail:null,
+            selectedMail: null,
             filterBy: {
                 str: '',
                 type: null,
-                
+
             },
-            
+
         }
     },
     methods: {
@@ -36,13 +36,20 @@ export default {
             this.filterBy.type = type
             this.selectedMail = null
         },
-        setSelectedMail(mail){
+        setSelectedMail(mail) {
             this.selectedMail = mail
+        },
+        removeFromDisplay(mailId){
+            const idx = this.mails.findIndex((mail)=>mail.id === mailId)
+            this.mails.splice(idx,1)
         }
     },
     computed: {
         mailsToShow() {
-            if (!this.filterBy.str === '' && this.filterBy.type === null) return this.mails.filter((mail)=>mail.isDeleted);
+            if (this.filterBy.str === '' && this.filterBy.type === null){
+                return this.mails.filter((mail) => !mail.isDeleted);
+            }
+
             const filterStr = this.filterBy.str.toLowerCase().trim()
 
             const filteredMails = this.mails.filter((mail) => {
@@ -53,8 +60,9 @@ export default {
             });
             const { type } = this.filterBy
             if (!type) return filteredMails
-            if (type === 'received') return filteredMails.filter((mail) => mail.isReceived)
-            if (type === 'sent') return filteredMails.filter((mail) => !mail.isReceived)
+            if (type === 'received') return filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted)
+            if (type === 'sent') return filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted)
+            if(type === 'bin') return filteredMails.filter((mail)=> mail.isDeleted)
 
             return filteredMails
         }

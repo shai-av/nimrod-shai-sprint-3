@@ -1,3 +1,5 @@
+import { mailService } from "../services/mail-service.js"
+
 export default {
     props: [
         'mail'
@@ -16,12 +18,25 @@ export default {
             {{getDate}}
         </td>
         <td>
-            <button @click="mail.isDeleted = true">remove</button>
+            <button @click.stop="deleteMail">remove</button>
         </td>
     `,
     data() {
         return {
 
+        }
+    },
+    emits: ["removeMail"],
+    methods: {
+        deleteMail() {
+            if (this.mail.isDeleted) {
+                mailService.remove(this.mail.id)
+                this.$emit('removeMail',this.mail.id)
+            } else {
+                this.mail.isDeleted = true
+                mailService.save(this.mail)
+
+            }
         }
     },
     computed: {
@@ -33,7 +48,7 @@ export default {
             const date = new Date(this.mail.sentAt)
             const day = date.getDay()
             const month = date.toLocaleString('default', { month: 'long' })
-            
+
             return `${day} ${month.substring(3, 0)}`
         }
     }

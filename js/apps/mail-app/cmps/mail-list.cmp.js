@@ -9,7 +9,7 @@ export default {
             <thead></thead>
             <tbody>
                 <tr v-for="mail in mails" @click="read(mail)">
-                    <mail-preview :mail="mail" />
+                    <mail-preview :mail="mail" @removeMail="removeMail"></mail-preview>
                 </tr>
             </tbody>
         </table>
@@ -30,6 +30,10 @@ export default {
         mail.isRead = true
         mailService.save(mail)
         this.$emit('select',mail)
+    },
+    removeMail(mailId){
+        mailService.remove(mailId)
+        this.$emit('removeMailLocal',mailId)
     }
   },
   computed: {},
