@@ -60,9 +60,9 @@ function save(note) {
 }
 
 
-// function remove(noteId) {
-//     return storageService.remove(NOTES_KEY, noteId)
-// }
+function remove(noteId) {
+    return storageService.remove(NOTES_KEY, noteId)
+}
 
 
 function get(noteId) {

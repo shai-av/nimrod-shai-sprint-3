@@ -1,6 +1,8 @@
 import noteTxt from './dynamic-cmp/txt-cmp.js'
 import noteImg from './dynamic-cmp/img-cmp.js'
 import noteTodos from './dynamic-cmp/todos-cmp.js'
+import noteVideo from './dynamic-cmp/video-cmp.js'
+
 
 export default {
     props: ["notes"],
@@ -23,7 +25,8 @@ export default {
     components: {
         noteTxt,
         noteImg,
-        noteTodos
+        noteTodos,
+        noteVideo
     },
 
     data() {
