@@ -3,9 +3,9 @@ import { mailService } from "../services/mail-service.js"
 
 export default {
     template: `
-        <section v-if="book" class="main-container mail-details">
-        <router-link :to="'/mail-app/details/' + prevMailId">Prev</router-link>
-            <router-link :to="'/mail-app/details/' + nextMailId">Next</router-link>
+        <section v-if="mail" class="main-container mail-details">
+        <router-link :to="'/mail/details/' + prevMailId">Prev</router-link>
+        <router-link :to="'/mail/details/' + nextMailId">Next</router-link>
             <p>{{getBody}}<span v-if="isReadMore" class="read-more" @click="userClkReadMore = true">...</span></p>
         </section>
     `,
@@ -27,15 +27,14 @@ export default {
             else return this.mail.body
           },
           isReadMore(){
-            return !this.userClkReadMore && this.book.description.length>100
+            return !this.userClkReadMore && this.mail.body.length>100
           },
     },
     created(){
     },
     watch:{
         '$route.params.mailId':{
-            handler() {
-                
+            handler() {  
                 const id = this.$route.params.mailId
                 if(!id) return 
                 mailService.get(id).then(mail => {
@@ -44,7 +43,7 @@ export default {
                         .then(mailIds => {
                             this.nextMailId = mailIds.next
                             this.prevMailId = mailIds.prev
-                        })
+                        }).catch(console.log('route param error'))
                 })
             },
             immediate: true

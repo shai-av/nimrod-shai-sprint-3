@@ -7,7 +7,7 @@ export const mailService = {
     remove,
     save,
     get,
-    getPrevNextMail,
+    getPrevNextMailId,
     addMail,
 };
 
@@ -33,7 +33,7 @@ function get(mailId) {
     return storageService.get(MAILS_KEY, mailId)
 }
 
-function getPrevNextMail(mailId){
+function getPrevNextMailId(mailId){
         return storageService.query(MAILS_KEY)
             .then(mails => {
                 const idx = mails.findIndex(mail => mail.id === mailId)
@@ -42,6 +42,7 @@ function getPrevNextMail(mailId){
                     prev:(idx !== 0)? mails[idx - 1].id : mails[mails.length-1].id}
             })
 }
+
 
 function _prepareData(items){
     let mails = items.map((mail)=> _createMail(mail))

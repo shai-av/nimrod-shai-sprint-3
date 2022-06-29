@@ -29,7 +29,7 @@ export default {
     Read(mail){
         mail.isRead = true
         mailService.save(mail)
-        this.$router.push('/mail-app/details/:mailId')
+        this.$router.push(`/mail/details/${mail.id}`)
     }
   },
   computed: {},
