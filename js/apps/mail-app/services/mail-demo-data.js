@@ -9,7 +9,7 @@ export default [
       "from":"joe@apsus.com",
   },
   {
-      "id": 'e101',
+      "id": 'e102',
       "subject": "djsklajd jdsklajds djsakldja",
       "body": "dhsjakhdsjakhdsjakhdsjkahdkja dhsjakhdkjsa hdjskahdkjas",
       "isRead": false,
@@ -18,7 +18,7 @@ export default [
       "from":"joe@apsus.com",
   },
   {
-      "id": 'e101',
+      "id": 'e103',
       "subject": "Miss you!",
       "body": "Would love to catch up sometimes",
       "isRead": false,
@@ -27,7 +27,7 @@ export default [
       "from":"joe@apsus.com",
   },
   {
-      "id": 'e101',
+      "id": 'e104',
       "subject": "dsahjk hjdkshak hjdksahk hjk",
       "body": "Would love to catch up sometimes",
       "isRead": false,
@@ -36,7 +36,7 @@ export default [
       "from":"momo@momo.com",
   },
   {
-      "id": 'e101',
+      "id": 'e105',
       "subject": "Miss you!",
       "body": "Would love to catch up sometimes",
       "isRead": false,
@@ -45,7 +45,7 @@ export default [
       "from":"momo@momo.com",
   },
   {
-      "id": 'e101',
+      "id": 'e106',
       "subject": "Miss you!",
       "body": "Would love to catch up sometimes",
       "isRead": false,
@@ -53,6 +53,4 @@ export default [
       "to": "joe@apsus.com",
       "from":"momo@momo.com",
   },
-
-   
   ]

@@ -6,10 +6,10 @@ export default {
         <td>
             X
         </td>
-        <td>
+        <td class="t-name" :class="{read:mail.isRead}">
             {{getName}}
         </td>
-        <td>
+        <td class="t-subject" :class="{read:mail.isRead}">
             {{mail.subject}}
         </td>
         <td>

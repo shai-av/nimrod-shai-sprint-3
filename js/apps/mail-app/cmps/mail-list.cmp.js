@@ -1,3 +1,4 @@
+import { mailService } from "../services/mail-service.js";
 import mailPreview from "./mail-preview.cmp.js";
 
 export default {
@@ -8,7 +9,7 @@ export default {
             <thead></thead>
 
             <tbody>
-                <tr v-for="mail in mails">
+                <tr v-for="mail in mails" @click="setRead(mail)">
                     <mail-preview :mail="mail" />
                 </tr>
             </tbody>
@@ -27,12 +28,13 @@ export default {
     return {};
   },
   methods: {
-    select(book) {
-      this.$emit("selected", book);
-    },
+    setRead(mail){
+        mail.isRead = true
+        mailService.save(mail)
+    }
   },
   computed: {},
   mounted(){
-    console.log(this.mails);
+    console.log(this.mails)
   }
 };
