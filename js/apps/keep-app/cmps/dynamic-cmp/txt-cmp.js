@@ -1,15 +1,17 @@
 export default {
-    template: `
+  template: `
           <section>
             <p>txt-note</p>
              <p>{{type.txt}}</p>
           </section>
           `,
-    props: ["type"],
-    data() {
-    },
-    methods: {
-    },
-    computed: {
+  props: ["type"],
+  data() {
+    return {
     }
+  },
+  methods: {
+  },
+  computed: {
+  }
 }

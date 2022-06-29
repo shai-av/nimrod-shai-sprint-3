@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
           <section>
             <p>todos-note</p>
              <p>{{type.label}}</p>
@@ -8,11 +8,14 @@ export default {
 
           </section>
           `,
-    props: ["type"],
-    data() {
-    },
-    methods: {
-    },
-    computed: {
+  props: ["type"],
+  data() {
+    return {
+
     }
+  },
+  methods: {
+  },
+  computed: {
+  }
 }

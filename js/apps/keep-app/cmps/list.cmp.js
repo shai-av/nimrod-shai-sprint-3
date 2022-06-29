@@ -11,12 +11,14 @@ export default {
         <p>this is notes list</p>
 
         <ul>
-            <li v-for="note in notes">
+            <li class="note-card" v-for="note in notes">
                 <component :is="note.type"  
                         :type="note.info" 
                        >
                     </component>
                     <br>
+                    <button @click="remove(note)">X</button>
+
             </li>
         </ul>
       
@@ -33,6 +35,9 @@ export default {
         return {};
     },
     methods: {
-
+        remove(note) {
+            console.log('remove');
+            this.$emit('remove', note.id);
+        }
     },
 }
