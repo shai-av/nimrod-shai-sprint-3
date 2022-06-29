@@ -15,6 +15,9 @@ export default {
         <td>
             {{getDate}}
         </td>
+        <td>
+            <button @click="mail.isDeleted = true">remove</button>
+        </td>
     `,
     data() {
         return {

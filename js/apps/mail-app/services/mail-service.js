@@ -51,6 +51,8 @@ function _prepareData(items){
 
 function _createMail(item){
     item['isReceived'] = (item.to === loggedinUser.email)
+    item['isDeleted'] = false
+    
     return item 
 }
 

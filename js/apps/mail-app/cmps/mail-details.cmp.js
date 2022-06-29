@@ -2,17 +2,19 @@
 import { mailService } from "../services/mail-service.js"
 
 export default {
+    props:[
+        'mail'
+    ],
     template: `
         <section v-if="mail" class="main-container mail-details">
-        <router-link :to="'/mail/details/' + prevMailId">Prev</router-link>
-        <router-link :to="'/mail/details/' + nextMailId">Next</router-link>
+        <!-- <router-link :to="'/mail/details/' + prevMailId">Prev</router-link> -->
+        <!-- <router-link :to="'/mail/details/' + nextMailId">Next</router-link> -->
             <p>{{getBody}}<span v-if="isReadMore" class="read-more" @click="userClkReadMore = true">...</span></p>
         </section>
     `,
     data() {
         return {
             userClkReadMore:false,
-            mail:null,
             nextMailId:null,
             prevMailId:null,
         }   
@@ -32,21 +34,21 @@ export default {
     },
     created(){
     },
-    watch:{
-        '$route.params.mailId':{
-            handler() {  
-                const id = this.$route.params.mailId
-                if(!id) return 
-                mailService.get(id).then(mail => {
-                    this.mail = mail
-                     mailService.getPrevNextMailId(mail.id)
-                        .then(mailIds => {
-                            this.nextMailId = mailIds.next
-                            this.prevMailId = mailIds.prev
-                        }).catch(console.log('route param error'))
-                })
-            },
-            immediate: true
-        }
-    }
+    // watch:{
+    //     '$route.params.mailId':{
+    //         handler() {  
+    //             const id = this.$route.params.mailId
+    //             if(!id) return 
+    //             mailService.get(id).then(mail => {
+    //                 this.mail = mail
+    //                  mailService.getPrevNextMailId(mail.id)
+    //                     .then(mailIds => {
+    //                         this.nextMailId = mailIds.next
+    //                         this.prevMailId = mailIds.prev
+    //                     }).catch(console.log('route param error'))
+    //             })
+    //         },
+    //         immediate: true
+    //     }
+    // }
 }

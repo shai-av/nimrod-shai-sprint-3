@@ -2,37 +2,47 @@ import { mailService } from "../services/mail-service.js"
 import mailList from "../cmps/mail-list.cmp.js"
 import mailTopFilter from "../cmps/mail-top-filter.cmp.js"
 import mailSideFilter from "../cmps/mail-side-filter.cmp.js";
+import mailDetails from "../cmps/mail-details.cmp.js";
+
 export default {
     template: `
  <section v-if="mails" class="main-container mail-app">
     <mail-top-filter @getFilter="setFilterStr"/>
     <div class="flex">
-    <mail-side-filter @getFilter="setFilterType" />
-   <mail-list :mails="mailsToShow"/>
+    <mail-side-filter @getFilter="setFilterType"/>
+    <mail-details v-if="selectedMail" :mail="selectedMail"/>
+    <mail-list v-else :mails="mailsToShow" @select="setSelectedMail"/>
    </div>
  </section>
 `,
     data() {
         return {
             mails: null,
+            selectedMail:null,
             filterBy: {
                 str: '',
                 type: null,
+                
             },
+            
         }
     },
     methods: {
         setFilterStr(str) {
             this.filterBy.str = str
+            this.selectedMail = null
         },
         setFilterType(type) {
             this.filterBy.type = type
-            console.log(type);
+            this.selectedMail = null
+        },
+        setSelectedMail(mail){
+            this.selectedMail = mail
         }
     },
     computed: {
         mailsToShow() {
-            if (!this.filterBy.str === '' && this.filterBy.type === null) return this.mails;
+            if (!this.filterBy.str === '' && this.filterBy.type === null) return this.mails.filter((mail)=>mail.isDeleted);
             const filterStr = this.filterBy.str.toLowerCase().trim()
 
             const filteredMails = this.mails.filter((mail) => {
@@ -57,6 +67,7 @@ export default {
     components: {
         mailList,
         mailTopFilter,
-        mailSideFilter
+        mailSideFilter,
+        mailDetails,
     }
 };
