@@ -8,7 +8,7 @@ export default {
         <table>
             <thead></thead>
             <tbody>
-                <tr v-for="mail in mails" @click="setRead(mail)">
+                <tr v-for="mail in mails" @click="Read(mail)">
                     <mail-preview :mail="mail" />
                 </tr>
             </tbody>
@@ -26,9 +26,10 @@ export default {
     return {};
   },
   methods: {
-    setRead(mail){
+    Read(mail){
         mail.isRead = true
         mailService.save(mail)
+        this.$router.push('/mail-app/details/:mailId')
     }
   },
   computed: {},
