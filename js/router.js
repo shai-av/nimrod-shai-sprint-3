@@ -3,9 +3,7 @@ import aboutPage from './views/about-page.cmp.js';
 import mailApp from './apps/mail-app/views/mail-app.cmp.js';
 import keepApp from './apps/keep-app/views/keep-app.cmp.js';
 import bookApp from './apps/book-app/views/book-app.cmp.js'
-
-
-
+import mailDetails from './apps/mail-app/cmps/mail-details.cmp.js';
 
 const routes = [
     {
@@ -21,6 +19,10 @@ const routes = [
         component: mailApp
     },
     {
+        path: '/mail/details/:mailId',
+        component: mailDetails
+    },
+    {
         path: '/keep',
         component: keepApp
     },
@@ -28,6 +30,10 @@ const routes = [
         path: '/book',
         component: bookApp
     },
+    // {
+    //     path: '/book/details/:bookId',
+    //     component: bookDetails
+    // },
 ]
 
 export const router = VueRouter.createRouter({
