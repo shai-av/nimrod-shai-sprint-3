@@ -3,16 +3,21 @@ export default {
           <section>
          <p>img-note</p>
              <p>title:  {{type.title}}</p>
-             <p>{{type.url}}</p>
-             <img src="type.url" alt="">
-
+             <!-- <img v-if="type" :src="imgSrc" alt=""> -->
+             <img class="" v-if="type" :src="imgSrc" alt=""/>
           </section>
           `,
     props: ["type"],
     data() {
+        return {
+
+        }
     },
     methods: {
     },
     computed: {
+        imgSrc() {
+            return this.type.url
+        }
     }
 }

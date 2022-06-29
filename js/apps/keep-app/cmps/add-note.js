@@ -20,10 +20,13 @@ export default {
     methods: {
         addNote() {
             if (!this.newNote.info.txt) return console.log('box is empty')
-            const note = keepsService.save(this.newNote)
-            console.log('this.newNote', this.newNote);
-            this.$emit("saved", note);
-            this.newNote = keepsService.getEmptyNote()
+            keepsService.add(this.newNote)
+                .then((note) => {
+                    this.newNote = keepsService.getEmptyNote()
+                    this.$emit("saved", note)
+                })
+
+            // this.newNote = keepsService.getEmptyNote()
         }
     }
     ,

@@ -6,8 +6,8 @@ export default {
     template: `
  <section class=" main-container ">
    <h3>keep app - welcome</h3>
-    <add-note></add-note>
-   <notes-list :notes='this.notes'></notes-list>
+    <add-note @saved="addNoteToDisplay"></add-note>
+   <notes-list :notes='this.notes' @remove="removeNote"></notes-list>
  </section>
 `,
     components: {
@@ -24,7 +24,16 @@ export default {
         keepsService.query().then(notes => this.notes = notes)
     },
 
-    methods: {},
+    methods: {
+        addNoteToDisplay(note) {
+            console.log('note', note);
+            this.notes.push(note)
+        },
+        removeNote(noteId) {
+            console.log('note', noteId)
+            keepsService.remove(noteId)
+        }
+    },
 
     computed: {},
 

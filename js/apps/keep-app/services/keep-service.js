@@ -3,6 +3,7 @@ import { utilService } from '../../../services/util-service.js'
 import { storageService } from '../../../services/async-storage-service.js';
 
 
+
 const NOTES_KEY = 'notesDB';
 // const notes_SEARCH_KEY = 'notesSearchDB'
 
@@ -17,6 +18,7 @@ export const keepsService = {
     get,
     getPrevNextNoteId,
     getEmptyNote,
+    add
 }
 
 function getEmptyNote() {
@@ -50,6 +52,9 @@ function query() {
     return storageService.query(NOTES_KEY)
 }
 
+function add(note) {
+    return storageService.post(NOTES_KEY, note)
+}
 
 function save(note) {
     const notes = query()
@@ -61,6 +66,8 @@ function save(note) {
 
 
 function remove(noteId) {
+    console.log('remove keepservice noteskey ', NOTES_KEY)
+    console.log('remove keepservice noteId', noteId)
     return storageService.remove(NOTES_KEY, noteId)
 }
 
@@ -144,7 +151,7 @@ function getNotes() {
             id: "n102",
             type: "note-img",
             info: {
-                url: "http://some-img/me",
+                url: "https://img.freepik.com/free-vector/cute-cow-cartoon-illustration_50699-716.jpg?w=2000",
                 title: "Bobi and Me"
             },
             style: {

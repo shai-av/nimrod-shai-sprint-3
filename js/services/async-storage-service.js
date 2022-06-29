@@ -47,6 +47,8 @@ function put(entityType, updatedEntity) {
 }
 
 function remove(entityType, entityId) {
+    console.log('remove async noteskey ', entityType)
+    console.log('remove async noteId', entityId)
     return query(entityType)
         .then(entities => {
             const idx = entities.findIndex(entity => entity.id === entityId);
