@@ -16,8 +16,20 @@ export const keepsService = {
     save,
     get,
     getPrevNextNoteId,
+    getEmptyNote,
 }
 
+function getEmptyNote() {
+    return {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: false,
+        info: {
+            txt: ''
+        }
+
+    }
+}
 
 function _createNotes() {
     console.log('_createnotes is on')
@@ -38,15 +50,25 @@ function query() {
     return storageService.query(NOTES_KEY)
 }
 
-function remove(noteId) {
-    return storageService.remove(NOTES_KEY, noteId)
-}
+
 function save(note) {
+    const notes = query()
+    notes.push(note)
+    utilService.saveToStorage(NOTES_KEY, notes);
+
     return storageService.put(NOTES_KEY, note)
 }
+
+
+// function remove(noteId) {
+//     return storageService.remove(NOTES_KEY, noteId)
+// }
+
+
 function get(noteId) {
     return storageService.get(NOTES_KEY, noteId)
 }
+
 
 function getPrevNextNoteId(noteId) {
     return storageService.query(NOTES_KEY)
