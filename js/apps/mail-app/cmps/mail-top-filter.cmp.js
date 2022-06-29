@@ -1,6 +1,6 @@
 export default {
   template: `
- <section class="filter">
+ <section class="top-filter">
     <input type="text" v-model="filterBy.str" @input="filter" placeholder="Search"/>
  </section>
 `,
@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     filter() {
-      this.$emit("getFilter", this.filterBy);
+      this.$emit("getFilter", this.filterBy.str);
     },
   },
   computed: {

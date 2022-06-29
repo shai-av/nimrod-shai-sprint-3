@@ -23,13 +23,14 @@ export default {
     },
     computed: {
         getName() {
-            return this.mail.from.split('@')[0]
+            let name = (this.mail.isReceived) ? this.mail.from : this.mail.to
+            return name.split('@')[0]
         },
         getDate() {
             const date = new Date(this.mail.sentAt)
             const day = date.getDay()
             const month = date.toLocaleString('default', { month: 'long' })
-
+            
             return `${day} ${month.substring(3, 0)}`
         }
     }

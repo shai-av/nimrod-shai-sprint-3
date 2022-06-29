@@ -5,8 +5,8 @@ export default [
       "body": "Would love to catch up sometimes dsakjhdksajhdjkahskdhaskjdsa dskahdkjsahdsajkhd",
       "isRead": false,
       "sentAt" : 1551133930594,
-      "to": "momo@momo.com",
-      "from":"joe@apsus.com",
+      "to": "dod@momo.com",
+      "from":"joe@appsus.com",
   },
   {
       "id": 'e102',
@@ -15,7 +15,7 @@ export default [
       "isRead": false,
       "sentAt" : 1551133930594,
       "to": "Puki@momo.com",
-      "from":"joe@apsus.com",
+      "from":"joe@appsus.com",
   },
   {
       "id": 'e103',
@@ -24,7 +24,7 @@ export default [
       "isRead": false,
       "sentAt" : 1551133930594,
       "to": "David@momo.com",
-      "from":"joe@apsus.com",
+      "from":"joe@appsus.com",
   },
   {
       "id": 'e104',
@@ -32,7 +32,7 @@ export default [
       "body": "Would love to catch up sometimes",
       "isRead": false,
       "sentAt" : 1551133930594,
-      "to": "joe@apsus.com",
+      "to": "joe@appsus.com",
       "from":"momo@momo.com",
   },
   {
@@ -41,8 +41,8 @@ export default [
       "body": "Would love to catch up sometimes",
       "isRead": false,
       "sentAt" : 1551133930594,
-      "to": "joe@apsus.com",
-      "from":"momo@momo.com",
+      "to": "joe@appsus.com",
+      "from":"dodo@momo.com",
   },
   {
       "id": 'e106',
@@ -50,7 +50,7 @@ export default [
       "body": "Would love to catch up sometimes",
       "isRead": false,
       "sentAt" : 1551133930594,
-      "to": "joe@apsus.com",
-      "from":"momo@momo.com",
+      "to": "joe@appsus.com",
+      "from":"benDod@momo.com",
   },
   ]

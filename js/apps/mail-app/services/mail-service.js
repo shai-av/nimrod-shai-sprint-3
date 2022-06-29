@@ -12,8 +12,12 @@ export const mailService = {
 };
 
 const MAILS_KEY = 'mailsDB';
+const loggedinUser = {
+    email: 'joe@appsus.com',
+    fullname: 'Joe Appsus'
+   }
 
-if (!utilService.loadFromStorage(MAILS_KEY)) utilService.saveToStorage(MAILS_KEY, mailDemo)
+if (!utilService.loadFromStorage(MAILS_KEY)) utilService.saveToStorage(MAILS_KEY, _prepareData(mailDemo))
 
 function query() {
     return storageService.query(MAILS_KEY)
@@ -39,30 +43,14 @@ function getPrevNextMail(mailId){
             })
 }
 
-// function _prepareData(items){
-//     let mails = items.map((mail)=> _createBook(mail))
-//     return mails
-// }
+function _prepareData(items){
+    let mails = items.map((mail)=> _createMail(mail))
+    return mails
+}
 
 function _createMail(item){
-    return {
-        id:item.id,
-        title:item.volumeInfo.title,
-        subtitle:'subtitle',
-        authors:item.volumeInfo.authors,
-        categories:item.volumeInfo.categories,
-        pageCount:item.volumeInfo.pageCount,
-        thumbnail:item.volumeInfo.imageLinks['thumbnail'],
-        publishedDate:item.volumeInfo.publishedDate,
-        language:item.volumeInfo.language,
-        description:item.volumeInfo.title,
-        listPrice:{
-            amount:50,
-            currencyCode:"EUR",
-            isOnSale:false,
-        }
-
-    }
+    item['isReceived'] = (item.to === loggedinUser.email)
+    return item 
 }
 
 function addMail(mail){

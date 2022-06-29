@@ -2,3 +2,6 @@
 .mail-app{
     /* background-color: black; */
 }
+.mail-side-filter p{
+    cursor: pointer;
+}
