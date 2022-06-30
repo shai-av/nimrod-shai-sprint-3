@@ -24,7 +24,7 @@ header {
 }
 
 .logo-helper{
-    font-size: x-large;
+    font-size: 2em;
 }
 
 .nav-list li a.router-link-exact-active{

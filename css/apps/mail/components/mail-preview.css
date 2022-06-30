@@ -1,9 +1,40 @@
+.mail-preview{
+    border:1px solid #eceff1;
+    background-color: #ffffff;
+    font-size:1.5em;
+}
 .t-name, .t-subject{
     font-weight: 700;
 }
 .read{
     font-weight: 400;
+    background-color: #f5f7f7;
 }
 .starred{
     color:rgb(255, 187, 0);
+}
+
+.t-star{
+    width:10%;
+    text-align: center;
+    font-size:large;
+}
+
+.t-name{
+    width:15%;
+}
+
+.t-subject{
+    width:50%;
+}
+
+.t-date{
+    width:10%;
+}
+
+.t-btns{
+    flex-basis:10%;
+}
+.t-btns img{
+    width:30px;
 }

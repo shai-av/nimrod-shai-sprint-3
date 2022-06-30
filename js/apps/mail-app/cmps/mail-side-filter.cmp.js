@@ -1,22 +1,22 @@
 export default {
-    template:`
+    template: `
     <section class="mail-side-filter flex flex-column">
         <p @click="filter(null)" :class="{selected: selectedFilter === null}">All</p>
         <p @click="filter('received')" :class="{selected: selectedFilter === 'received'}">Inbox</p>
-        <p @click="filter('sent')":class="{selected: selectedFilter === 'sent'}">Sent</p>
-        <p @click="filter('starred')":class="{selected: selectedFilter === 'starred'}">Starred</p>
-        <p @click="filter('bin')":class="{selected: selectedFilter === 'bin'}">Bin</p>
+        <p @click="filter('sent')" :class="{selected: selectedFilter === 'sent'}">Sent</p>
+        <p @click="filter('starred')" :class="{selected: selectedFilter === 'starred'}">Starred</p>
+        <p @click="filter('bin')" :class="{selected: selectedFilter === 'bin'}">Bin</p>
     </section>
     `,
-    data(){
-        return{
-            selectedFilter:'received'
+    data() {
+        return {
+            selectedFilter: 'received'
         }
     },
-    methods:{
-        filter(type){
+    methods: {
+        filter(type) {
             this.selectedFilter = type
-            this.$emit("getFilter",type)
+            this.$emit("getFilter", type)
         }
     }
 }

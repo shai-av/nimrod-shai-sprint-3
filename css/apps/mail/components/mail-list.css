@@ -1,3 +1,10 @@
 .mail-container{
     cursor: pointer;
+    width:100%;
+}
+.mail-list{
+    width:100%;
+}
+.mail-preview{
+    width:100%;
 }

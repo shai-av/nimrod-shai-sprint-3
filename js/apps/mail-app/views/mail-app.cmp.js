@@ -7,10 +7,10 @@ import mailDetails from "../cmps/mail-details.cmp.js";
 export default {
     template: `
  <section v-if="mails" class="main-container mail-app">
-    <mail-top-filter @getFilter="setFilterStr"/>
-    <div class="flex">
-    <div>
-        <button @click="newMail">compose</button>
+    <mail-top-filter @getFilter="setFilterStr"></mail-top-filter>
+    <div class="sub-1-mails flex">
+    <div class="sub-2-mails">
+        <button @click="newMail" class="compose-btn">compose</button>
     <mail-side-filter @getFilter="setFilterType"/>
     </div>
     <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="addMail"/>

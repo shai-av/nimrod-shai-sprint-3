@@ -1,0 +1,9 @@
+.mail-top-filter{
+    margin:0.5em 0;
+    margin-inline-start: 0.4em;
+}
+.mail-top-filter input{
+    margin-inline-start: 1em;
+    max-width:500px;
+    width:30%;
+}

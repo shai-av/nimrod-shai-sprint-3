@@ -5,7 +5,8 @@ export default {
         'mail'
     ],
     template: `
-        <div :class="{starred:mail.isStarred}" @click.stop="starMail">
+    <div class="mail-preview flex align-center">
+        <div :class="{starred:mail.isStarred}" class="t-star" @click.stop="starMail">
         ★
         </div>
         <div class="t-name" :class="{read:mail.isRead}">
@@ -14,12 +15,13 @@ export default {
         <div class="t-subject" :class="{read:mail.isRead}">
             {{mail.subject}}
         </div>
-        <div>
+        <div class="t-date">
             {{getDate}}
         </div>
-        <div>
-            <button @click.stop="deleteMail">remove</button>
+        <div class="t-btns">
+            <span @click.stop="deleteMail" title="delete"><img src="./img/bin.jpg" alt="dlt"/></span>
         </div>
+    </div>
     `,
     data() {
         return {

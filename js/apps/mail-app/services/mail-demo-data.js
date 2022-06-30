@@ -10,11 +10,11 @@ export default [
   },
   {
       "id": 'e102',
-      "subject": "",
-      "body": "",
+      "subject": "djsklajd jdsklajds djsakldja",
+      "body": "dhsjakhdsjakhdsjakhdsjkahdkja dhsjakhdkjsa hdjskahdkjas",
       "isRead": false,
-      "sentAt" : null,
-      "to": "",
+      "sentAt" : 1551133930594,
+      "to": "Puki@momo.com",
       "from":"joe@appsus.com",
   },
   {

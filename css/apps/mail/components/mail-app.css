@@ -1,7 +1,29 @@
 /* ////////// */
-.mail-app{
+
+.mail-app {
     background-color: #ffffff;
+    /* font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif */
 }
-.mail-side-filter p{
+
+.mail-side-filter p {
     cursor: pointer;
+}
+
+.sub-1-mails {
+    height: 100%;
+}
+
+.sub-2-mails {
+    height: inherit;
+}
+
+.compose-btn {
+    background-color: #ffffff;
+    padding: 0.8em 1.3em;
+    border-radius: 2em;
+    margin-inline-start:0.5em;
+    margin-inline-end:1.5em;
+    margin-bottom: 0.5em;
+    box-shadow: 0px 2px 6px 0px black;
+    cursor:pointer;
 }
