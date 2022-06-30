@@ -2,12 +2,12 @@ export default {
     template: `
           <section>
          <p>img-note</p>
-             <p>title:  {{type.title}}</p>
-             <!-- <img v-if="type" :src="imgSrc" alt=""> -->
-             <img class="" v-if="type" :src="imgSrc" alt=""/>
+             <p>title:  {{info.title}}</p>
+             <!-- <img v-if="info" :src="imgSrc" alt=""> -->
+             <img class="" v-if="info" :src="imgSrc" alt=""/>
           </section>
           `,
-    props: ["type"],
+    props: ["info"],
     data() {
         return {
 
@@ -17,7 +17,7 @@ export default {
     },
     computed: {
         imgSrc() {
-            return this.type.url
+            return this.info.url
         }
     }
 }

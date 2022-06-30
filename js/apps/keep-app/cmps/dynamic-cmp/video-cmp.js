@@ -2,12 +2,12 @@ export default {
     template: `
           <section>
          <p>video-note</p>
-             <p>title:  {{type.title}}</p>
-             <p>{{type.url}}</p>
+             <p>title:  {{info.title}}</p>
+             <p>{{info.url}}</p>
 
           </section>
           `,
-    props: ["type"],
+    props: ["info"],
     data() {
     },
     methods: {

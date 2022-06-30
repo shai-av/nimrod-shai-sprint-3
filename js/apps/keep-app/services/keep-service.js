@@ -17,11 +17,14 @@ export const keepsService = {
     save,
     get,
     getPrevNextNoteId,
-    getEmptyNote,
-    add
+    getEmptyTxtNote,
+    getEmptyTodoNote,
+    add,
+    edit,
 }
 
-function getEmptyNote() {
+
+function getEmptyTxtNote() {
     return {
         id: utilService.makeId(),
         type: "note-txt",
@@ -33,20 +36,34 @@ function getEmptyNote() {
     }
 }
 
+function getEmptyTodoNote() {
+    return {
+        id: utilService.makeId(),
+        type: "note-todos",
+        info: {
+            label: '',
+            todos: [
+                { txt: '', doneAt: null },
+            ]
+        }
+    }
+}
+
 function _createNotes() {
     console.log('_createnotes is on')
     let notes = utilService.loadFromStorage(NOTES_KEY);
     if (!notes || !notes.length) {
         utilService.saveToStorage(NOTES_KEY, notesArray);
     }
-    console.log('let notes ', notes);
-    console.log('notesArray', notesArray);
+    // console.log('let notes ', notes);
+    // console.log('notesArray', notesArray);
     return notes
 }
 
 
-
-// if (!utilService.loadFromStorage(NOTES_KEY)) utilService.saveToStorage(NOTES_KEY, booksJson)
+function edit(note) {
+    storageService.put(NOTES_KEY, note)
+}
 
 function query() {
     return storageService.query(NOTES_KEY)
@@ -60,14 +77,13 @@ function save(note) {
     const notes = query()
     notes.push(note)
     utilService.saveToStorage(NOTES_KEY, notes);
-
     return storageService.put(NOTES_KEY, note)
 }
 
 
 function remove(noteId) {
-    console.log('remove keepservice noteskey ', NOTES_KEY)
-    console.log('remove keepservice noteId', noteId)
+    // console.log('remove keepservice noteskey ', NOTES_KEY)
+    // console.log('remove keepservice noteId', noteId)
     return storageService.remove(NOTES_KEY, noteId)
 }
 
@@ -162,7 +178,7 @@ function getNotes() {
             id: "n103",
             type: "note-todos",
             info: {
-                label: "Get my stuff together",
+                label: "Get my stuff done",
                 todos: [
                     { txt: "Driving liscence", doneAt: null },
                     { txt: "Coding power", doneAt: 187111111 }
