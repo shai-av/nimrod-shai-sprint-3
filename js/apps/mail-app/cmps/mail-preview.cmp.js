@@ -5,7 +5,7 @@ export default {
         'mail'
     ],
     template: `
-    <div class="mail-preview flex align-center">
+    <div class="mail-preview flex align-center" @mouseover="isHovered = true" @mouseleave="isHovered = false">
         <div :class="{starred:mail.isStarred}" class="t-star" @click.stop="starMail">
         ★
         </div>
@@ -18,14 +18,14 @@ export default {
         <div class="t-date">
             {{getDate}}
         </div>
-        <div class="t-btns">
-            <span @click.stop="deleteMail" title="delete"><img src="./img/bin.jpg" alt="dlt"/></span>
+        <div v-if="isHovered" class="t-btns">
+            <span @click.stop="deleteMail" title="delete"><img src="./img/bin1.png" alt="dlt"/></span>
         </div>
     </div>
     `,
     data() {
         return {
-
+            isHovered:false
         }
     },
     emits: ["removeMail"],
