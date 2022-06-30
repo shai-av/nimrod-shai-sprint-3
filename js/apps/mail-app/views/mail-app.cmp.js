@@ -24,7 +24,7 @@ export default {
             selectedMail: null,
             filterBy: {
                 str: '',
-                type: null,
+                type: 'received',
 
             },
 
