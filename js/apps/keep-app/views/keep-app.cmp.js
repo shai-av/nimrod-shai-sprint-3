@@ -34,7 +34,7 @@ export default {
                 console.log('Deleted successfully')
                 const idx = this.notes.findIndex((note) => note.id === noteId)
                 this.notes.splice(idx, 1);
-                eventBus.emit('show-msg', { txt: 'Deleted successfully', type: 'success' });
+                eventBus.emit('show-msg', { txt: 'Deleted successfully event bus', type: 'success' });
             }).catch(err => {
                 console.log(err)
                 // eventBus.emit('show-msg', { txt: 'Error - try again later', type: 'error' });
