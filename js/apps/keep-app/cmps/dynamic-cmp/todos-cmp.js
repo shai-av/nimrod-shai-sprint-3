@@ -6,16 +6,18 @@ export default {
              <ul>
                <h3>{{info.label}}</h3>
                <li class="todo" v-for="todo in info.todos">
-                 <span  @click="todoDone">❏</span>
-                   <span @click="editRow(todo)"> {{todo.txt}}</span>
-                        <!-- <span @click="editRow">edit row</span> -->
+                 <span v-if="!todo.isDone" @click="todo.isDone= !todo.isDone">❏</span>
+                 <span v-if="todo.isDone" @click="todo.isDone= !todo.isDone">👍</span>
+                   <span :class="{done: todo.isDone}"  @click="editRow(todo)"> {{todo.txt}}</span>
                       </li>
                       <button v-if="editMode" @click="save()">save</button>
                       <input v-if="editMode" v-model="txtRow" type="text">
+
                       <input v-if="editRowMode" v-model="txtNewRow" type="text">
-                      <button  @click="addTodo">add new todo</button>
+                      <button v-if="editRowMode" @click="addTodo">add new todo</button>
                       <button v-if="!editMode && !editRowMode" @click="startAddTodo">type new todo</button>
              </ul>
+
                   <!-- {{info.todos.length}} -->
                   <!-- <pre>{{info}}</pre> -->
           </section>
@@ -54,19 +56,27 @@ export default {
       this.editRowMode = 1
     },
     addTodo() {
-      // if(txtNewRow)
+      if (!this.txtNewRow) return
       var arr = this.info.todos
-      var newTodo = {
-        txt: this.txtNewRow,
-        doneAt: null
-      }
+      // var newTodo = {
+      //   txt: this.txtNewRow,
+      //   doneAt: null
+      // }
+      var newTodo = keepsService.getEmptyTodoNote
+      newTodo.txt = this.txtNewRow
+
       arr.push(newTodo)
       console.log('arr', arr)
       this.note.info.todos = arr
       console.log('note', this.note)
+
       keepsService.edit(this.note)
+
+      this.editRowMode = null
+      this.txtNewRow = ''
     },
-    computed: {
-    }
+    // computed: {
+
+    // }
   }
 }

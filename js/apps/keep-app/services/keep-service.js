@@ -21,8 +21,35 @@ export const keepsService = {
     getEmptyTodoNote,
     add,
     edit,
+    getEmptyImgNote,
+    getEmptyVideoNote,
+    loadImageFromInput,
 }
 
+function getEmptyVideoNote() {
+    return {
+        id: utilService.makeId,
+        type: "note-video",
+        info: {
+            url: '',
+            title: ''
+        }
+    }
+}
+
+function getEmptyImgNote() {
+    return {
+        id: utilService.makeId,
+        type: "note-img",
+        info: {
+            url: '',
+            title: ''
+        },
+        style: {
+            backgroundColor: "#00d"
+        }
+    }
+}
 
 function getEmptyTxtNote() {
     return {
@@ -43,7 +70,7 @@ function getEmptyTodoNote() {
         info: {
             label: '',
             todos: [
-                { txt: '', doneAt: null },
+                { txt: '', doneAt: null, isDone: false },
             ]
         }
     }
@@ -102,6 +129,21 @@ function getPrevNextNoteId(noteId) {
                 prev: (idx !== 0) ? notes[idx - 1].id : notes[notes.length - 1].id
             }
         })
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+    //After we read the file
+    reader.onload = function (event) {
+        var img = new Image()// Create a new html img element
+        img.src = event.target.result // Set the img src to the img file we read
+        //Run the callBack func , To render the img on the canvas
+        img.onload = onImageReady.bind(null, img)
+        console.log('img', img);
+        imgFromUser = img
+        // imgFlag = true
+    }
+    reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
 }
 
 // function getBooksFromApi(val) {
@@ -180,8 +222,8 @@ function getNotes() {
             info: {
                 label: "Get my stuff done",
                 todos: [
-                    { txt: "Driving liscence", doneAt: null },
-                    { txt: "Coding power", doneAt: 187111111 }
+                    { txt: "Driving liscence", doneAt: null, isDone: false },
+                    { txt: "Coding power", doneAt: 187111111, isDone: false }
                 ]
             }
         }
