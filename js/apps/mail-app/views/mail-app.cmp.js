@@ -1,20 +1,22 @@
 import { mailService } from "../services/mail-service.js"
 import mailList from "../cmps/mail-list.cmp.js"
 import mailTopFilter from "../cmps/mail-top-filter.cmp.js"
-import mailSideFilter from "../cmps/mail-side-filter.cmp.js";
-import mailDetails from "../cmps/mail-details.cmp.js";
+import mailSideFilter from "../cmps/mail-side-filter.cmp.js"
+import mailDetails from "../cmps/mail-details.cmp.js"
+import usrMsg from "../../../cmps/user-msg.cmp.js"
 
 export default {
     template: `
  <section v-if="mails" class="main-container mail-app">
+    <usr-msg />        
     <mail-top-filter @getFilter="setFilterStr"></mail-top-filter>
     <div class="sub-1-mails flex">
-    <div class="sub-2-mails">
-        <button @click="newMail" class="compose-btn">compose</button>
-    <mail-side-filter @getFilter="setFilterType"/>
-    </div>
-    <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="addMail"/>
-    <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" @removeMailLocal="removeFromDisplay"/>
+        <div class="sub-2-mails">
+            <button @click="newMail" class="compose-btn">compose</button>
+        <mail-side-filter @getFilter="setFilterType"/>
+        </div>
+        <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="addMail"/>
+        <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" @removeMailLocal="removeFromDisplay"/>
    </div>
  </section>
 `,
@@ -88,5 +90,6 @@ export default {
         mailTopFilter,
         mailSideFilter,
         mailDetails,
+        usrMsg,
     }
 };

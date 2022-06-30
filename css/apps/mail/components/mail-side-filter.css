@@ -18,3 +18,8 @@
 .mail-side-filter p:first-of-type{
     border-top:none;
 }
+.unread-count{
+    padding-inline-start: 1em;
+    text-align: end;
+    font-size:0.8em;
+}
