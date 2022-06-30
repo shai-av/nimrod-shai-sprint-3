@@ -9,8 +9,11 @@ export default {
  <section v-if="mails" class="main-container mail-app">
     <mail-top-filter @getFilter="setFilterStr"/>
     <div class="flex">
+    <div>
+        <button @click="newMail">compose</button>
     <mail-side-filter @getFilter="setFilterType"/>
-    <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null"/>
+    </div>
+    <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="addMail"/>
     <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" @removeMailLocal="removeFromDisplay"/>
    </div>
  </section>
@@ -42,6 +45,13 @@ export default {
         removeFromDisplay(mailId) {
             const idx = this.mails.findIndex((mail) => mail.id === mailId)
             this.mails.splice(idx, 1)
+        },
+        newMail(){
+          const mail = mailService.getEmptyMail()
+            this.selectedMail = mail
+        },
+        addMail(mail){
+            mailService.addMail(mail).then((mail)=> this.mails.push(mail))
         }
     },
     computed: {

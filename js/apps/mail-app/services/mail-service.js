@@ -9,6 +9,7 @@ export const mailService = {
     get,
     getPrevNextMailId,
     addMail,
+    getEmptyMail
 };
 
 const MAILS_KEY = 'mailsDB';
@@ -43,6 +44,20 @@ function getPrevNextMailId(mailId){
             })
 }
 
+function getEmptyMail(){
+    return {
+        "id": 'e'+ utilService.makeId(3),
+        "subject": "",
+        "body": "",
+        "sentAt" : null,
+        "to": "",
+        "from":"joe@appsus.com",
+        "isRead": false,
+        "isReceived": false,
+        "isDeleted":false,
+        "isStarred":false,
+    }
+}
 
 function _prepareData(items){
     let mails = items.map((mail)=> _createMail(mail))
