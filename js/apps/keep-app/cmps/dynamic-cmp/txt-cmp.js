@@ -2,10 +2,10 @@ export default {
   template: `
           <section>
             <p>txt-note</p>
-             <p>{{type.txt}}</p>
+             <p>{{info.txt}}</p>
           </section>
           `,
-  props: ["type"],
+  props: ["info"],
   data() {
     return {
     }

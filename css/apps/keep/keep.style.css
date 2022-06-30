@@ -1,2 +1,3 @@
 @import 'components/list.style.css';
-@import '../keep/keep-app.css'
+@import '../keep/keep-app.css';
+@import './components/todo.css';

@@ -7,7 +7,7 @@ export default {
  <section class=" main-container ">
    <h3>keep app - welcome</h3>
     <add-note @saved="addNoteToDisplay"></add-note>
-   <notes-list :notes='this.notes' @remove="removeNote"></notes-list>
+   <notes-list :notes='this.notes' @remove="removeNote" ></notes-list>
  </section>
 `,
     components: {
@@ -30,9 +30,16 @@ export default {
             this.notes.push(note)
         },
         removeNote(noteId) {
-            console.log('note', noteId)
-            keepsService.remove(noteId)
-        }
+            keepsService.remove(noteId).then(() => {
+                console.log('Deleted successfully')
+                const idx = this.notes.findIndex((note) => note.id === noteId)
+                this.notes.splice(idx, 1);
+                eventBus.emit('show-msg', { txt: 'Deleted successfully', type: 'success' });
+            }).catch(err => {
+                console.log(err)
+                // eventBus.emit('show-msg', { txt: 'Error - try again later', type: 'error' });
+            })
+        },
     },
 
     computed: {},

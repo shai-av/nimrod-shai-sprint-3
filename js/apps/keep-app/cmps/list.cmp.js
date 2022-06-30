@@ -2,23 +2,22 @@ import noteTxt from './dynamic-cmp/txt-cmp.js'
 import noteImg from './dynamic-cmp/img-cmp.js'
 import noteTodos from './dynamic-cmp/todos-cmp.js'
 import noteVideo from './dynamic-cmp/video-cmp.js'
-
+import editNote from './edit-note.js'
+import { keepsService } from "../services/keep-service.js"
 
 export default {
     props: ["notes"],
     template: `
     <section class="notes-list">
-        <p>this is notes list</p>
-
         <ul>
             <li class="note-card" v-for="note in notes">
                 <component :is="note.type"  
-                        :type="note.info" 
+                        :info="note.info"  :note="note"
                        >
                     </component>
                     <br>
                     <button @click="remove(note)">X</button>
-
+                    <edit-note :note='note' @edit="saveChangesNote"></edit-note>
             </li>
         </ul>
       
@@ -28,7 +27,8 @@ export default {
         noteTxt,
         noteImg,
         noteTodos,
-        noteVideo
+        noteVideo,
+        editNote
     },
 
     data() {
@@ -36,8 +36,18 @@ export default {
     },
     methods: {
         remove(note) {
-            console.log('remove');
-            this.$emit('remove', note.id);
+            this.$emit('remove', note.id)
+        },
+        saveChangesNote(note, txt) {
+            if (note.type === 'note-txt') note.info.txt = txt
+            if (note.type === 'note-img') note.info.title = txt
+            if (note.type === 'note-todos') {
+
+                note.info.todos[0].txt = txt
+            }
+
+
+            keepsService.edit(note)
         }
     },
 }
