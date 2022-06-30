@@ -5,14 +5,9 @@ export default {
   props: ["mails"],
   template: `
     <section class="mail-list"  v-if="mails.length>0">
-        <table>
-            <thead></thead>
-            <tbody>
-                <tr v-for="mail in mails" @click="read(mail)">
+                <div v-for="mail in mails" @click="read(mail)" class="flex mail-container">
                     <mail-preview :mail="mail" @removeMail="removeMail"></mail-preview>
-                </tr>
-            </tbody>
-        </table>
+                </div>
     </section>
     <section v-else class="no-mails-msg">
       No mails to show..

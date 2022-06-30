@@ -5,21 +5,21 @@ export default {
         'mail'
     ],
     template: `
-        <td>
+        <div>
             X
-        </td>
-        <td class="t-name" :class="{read:mail.isRead}">
+        </div>
+        <div class="t-name" :class="{read:mail.isRead}">
             {{getName}}
-        </td>
-        <td class="t-subject" :class="{read:mail.isRead}">
+        </div>
+        <div class="t-subject" :class="{read:mail.isRead}">
             {{mail.subject}}
-        </td>
-        <td>
+        </div>
+        <div>
             {{getDate}}
-        </td>
-        <td>
+        </div>
+        <div>
             <button @click.stop="deleteMail">remove</button>
-        </td>
+        </div>
     `,
     data() {
         return {
