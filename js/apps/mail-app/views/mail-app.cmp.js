@@ -10,7 +10,7 @@ export default {
     <mail-top-filter @getFilter="setFilterStr"/>
     <div class="flex">
     <mail-side-filter @getFilter="setFilterType"/>
-    <mail-details v-if="selectedMail" :selectedMail="selectedMail"/>
+    <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null"/>
     <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" @removeMailLocal="removeFromDisplay"/>
    </div>
  </section>

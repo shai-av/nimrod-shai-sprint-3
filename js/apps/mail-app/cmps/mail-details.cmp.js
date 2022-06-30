@@ -11,6 +11,8 @@ export default {
         <!-- <router-link :to="'/mail/details/' + nextMailId">Next</router-link> -->
         <button @click="setPrev">prev</button>
         <button @click="setNext">next</button>
+        <button @click="$emit('back')">Back</button>
+            
             <p>{{getBody}}<span v-if="isReadMore" class="read-more" @click="userClkReadMore = true">...</span></p>
         </section>
     `,
