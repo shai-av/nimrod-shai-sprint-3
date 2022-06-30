@@ -11,8 +11,8 @@
     font-weight: 700;
     margin-inline-end: 0.5em;
 }
-.btns{
-    margin-bottom:0.5em;
+.details-btns{
+    margin-bottom:0.7em;
 }
 .details-from{
     margin-bottom:0.5em;
@@ -26,4 +26,9 @@
 }
 .details-inputs span:first-of-type{
     margin-bottom:0.4em;
+}
+.details-subject{
+    font-weight: 600;
+    font-size:1.2em;
+    margin-bottom: 1em;
 }

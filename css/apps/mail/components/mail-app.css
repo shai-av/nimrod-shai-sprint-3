@@ -4,6 +4,9 @@
     background-color: #ffffff;
     /* font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif */
 }
+.mail-main-container {
+    min-height: calc(95vh - 11em);
+}
 
 .mail-side-filter p {
     cursor: pointer;

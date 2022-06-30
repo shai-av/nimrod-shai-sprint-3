@@ -7,14 +7,15 @@ export default {
         'selectedMail'
     ],
     template: `
-        <section v-if="mail" class="main-container mail-details">
+        <section v-if="mail" class="mail-main-container mail-details">
         <!-- <router-link :to="'/mail/details/' + prevMailId">Prev</router-link> -->
         <!-- <router-link :to="'/mail/details/' + nextMailId">Next</router-link> -->
-        <section class=btns>
+        <section class="details-btns">
             <button v-if="mail.sentAt" @click="setPrev">prev</button>
             <button v-if="mail.sentAt" @click="setNext">next</button>
             <button @click="$emit('back')">Back</button>
         </section>
+        <p class="details-subject">{{mail.subject}}</p>
         <p class="details-from">
             <span class="details-name">{{getName}}</span>
             <span class="details-mail">&lt; {{mail.from}} ></span>

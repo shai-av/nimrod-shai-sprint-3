@@ -1,6 +1,6 @@
 export default {
     template: `
-    <section class="mail-side-filter flex flex-column">
+    <section class="mail-side-filter mail-main-container flex flex-column">
         <p @click="filter(null)" :class="{selected: selectedFilter === null}">All</p>
         <p @click="filter('received')" :class="{selected: selectedFilter === 'received'}">Inbox <span class="unread-count">  2</span></p>
         <p @click="filter('sent')" :class="{selected: selectedFilter === 'sent'}">Sent</p>
