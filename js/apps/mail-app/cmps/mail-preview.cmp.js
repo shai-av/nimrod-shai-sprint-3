@@ -5,8 +5,8 @@ export default {
         'mail'
     ],
     template: `
-        <div>
-            X
+        <div :class="{starred:mail.isStarred}" @click.stop="starMail">
+        ★
         </div>
         <div class="t-name" :class="{read:mail.isRead}">
             {{getName}}
@@ -31,12 +31,15 @@ export default {
         deleteMail() {
             if (this.mail.isDeleted) {
                 mailService.remove(this.mail.id)
-                this.$emit('removeMail',this.mail.id)
+                this.$emit('removeMail', this.mail.id)
             } else {
                 this.mail.isDeleted = true
                 mailService.save(this.mail)
-
             }
+        },
+        starMail(){
+            this.mail.isStarred = !this.mail.isStarred
+            mailService.save(this.mail)
         }
     },
     computed: {

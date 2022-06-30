@@ -52,6 +52,7 @@ function _prepareData(items){
 function _createMail(item){
     item['isReceived'] = (item.to === loggedinUser.email)
     item['isDeleted'] = false
+    item['isStarred'] = false
     
     return item 
 }

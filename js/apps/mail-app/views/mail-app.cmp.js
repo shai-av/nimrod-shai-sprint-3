@@ -39,14 +39,14 @@ export default {
         setSelectedMail(mail) {
             this.selectedMail = mail
         },
-        removeFromDisplay(mailId){
-            const idx = this.mails.findIndex((mail)=>mail.id === mailId)
-            this.mails.splice(idx,1)
+        removeFromDisplay(mailId) {
+            const idx = this.mails.findIndex((mail) => mail.id === mailId)
+            this.mails.splice(idx, 1)
         }
     },
     computed: {
         mailsToShow() {
-            if (this.filterBy.str === '' && this.filterBy.type === null){
+            if (this.filterBy.str === '' && this.filterBy.type === null) {
                 return this.mails.filter((mail) => !mail.isDeleted);
             }
 
@@ -62,7 +62,8 @@ export default {
             if (!type) return filteredMails
             if (type === 'received') return filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted)
             if (type === 'sent') return filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted)
-            if(type === 'bin') return filteredMails.filter((mail)=> mail.isDeleted)
+            if (type === 'starred') return filteredMails.filter((mail) => mail.isStarred && !mail.isDeleted)
+            if (type === 'bin') return filteredMails.filter((mail) => mail.isDeleted)
 
             return filteredMails
         }

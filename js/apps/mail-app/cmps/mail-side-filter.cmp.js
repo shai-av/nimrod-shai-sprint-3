@@ -4,6 +4,7 @@ export default {
         <p @click="filter(null)">All</p>
         <p @click="filter('received')">Inbox</p>
         <p @click="filter('sent')">Sent</p>
+        <p @click="filter('starred')">Starred</p>
         <p @click="filter('bin')">Bin</p>
     </section>
     `,
