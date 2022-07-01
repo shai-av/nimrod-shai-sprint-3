@@ -54,7 +54,7 @@ function getEmptyMail(body) {
         "removedAt":null,
         "to": "",
         "from": "joe@appsus.com",
-        "isRead": false,
+        "isRead": true,
         "isReceived": false,
         "isDeleted": false,
         "isStarred": false,
@@ -74,6 +74,8 @@ function _createMail(item) {
     item['isArchived'] = false
     item['removedAt'] = null
 
+    if(!item.isReceived) item.isRead = true
+    
     return item
 }
 

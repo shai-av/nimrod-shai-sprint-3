@@ -1,4 +1,5 @@
 import { mailService } from "../services/mail-service.js"
+import { eventBus } from "../../../services/eventBus-service.js"
 
 export default {
     props: [
@@ -20,13 +21,15 @@ export default {
             {{getDate}}
         </div>
         <div v-if="isHovered" class="t-btns">
-        <span v-if="!mail.isArchived" @click.stop="isArchivedToggle" title="archive"><img src="./img/archive.png" alt="archive"/></span>
-        <span v-else @click.stop="isArchivedToggle" title="un-archive"><img src="./img/un-archive.png" alt="un-archive"/></span>
-            <span @click.stop="deleteMail" title="delete"><img src="./img/bin1.png" alt="dlt"/></span>
-            <span v-if="!mail.isRead" @click.stop="isReadToggle" title="As read">
-                <img src="./img/as-read.png" alt="As read"/></span>
-            <span v-else @click.stop="isReadToggle" title="Unread">
-                <img src="./img/as-un-read.png" alt="Unread"/></span>
+        <span class="act-span" v-if="!mail.isArchived" @click.stop="isArchivedToggle" title="archive"><img src="./img/archive.png" alt="archive"/></span>
+        <span class="act-span" v-else @click.stop="isArchivedToggle" title="un-archive"><img src="./img/un-archive.png" alt="un-archive"/></span>
+            <span class="act-span" @click.stop="deleteMail" title="delete"><img src="./img/bin1.png" alt="dlt"/></span>
+            <span v-if="mail.isReceived">
+                <span class="act-span" v-if="!mail.isRead" @click.stop="isReadToggle" title="As read">
+                    <img src="./img/as-read.png" alt="As read"/></span>
+                <span class="act-span" v-else @click.stop="isReadToggle" title="Unread">
+                    <img src="./img/as-un-read.png" alt="Unread"/></span>
+            </span>
         </div>
     </div>
     `,
@@ -59,6 +62,8 @@ export default {
         isReadToggle(){
             this.mail.isRead = !this.mail.isRead
             mailService.save(this.mail)
+            const n = (this.mail.isRead) ? -1 : 1 
+            eventBus.emit('set-unread',n)
         }
     },
     computed: {
