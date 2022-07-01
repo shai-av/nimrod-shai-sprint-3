@@ -1,5 +1,4 @@
 .book-review{
-    /* background-color: #00000081; */
     height: inherit;
     flex-basis:50%;
 }
@@ -7,6 +6,7 @@
     min-height: 6em;
     width: 20em;
     margin-bottom:1em;
+    resize: none;
 }
 .key{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -24,4 +24,10 @@
 }
 .rate-span{
     margin-inline-start: 2em;
+}
+.add-book button{
+    background-color: var(--clr-mail-btn);
+    color:var(--clr1);
+    padding:0.3em 0.5em;
+    border-radius: 0.5em;
 }

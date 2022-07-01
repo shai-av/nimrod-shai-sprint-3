@@ -2,8 +2,10 @@ export default {
     template: `
  <section class="home-page main-container flex justify-center align-center">
     <div class="welcome-msg">
-        <p>Welcome to Miss Book shop!</p>
-        <p>where you can enter back to the magical world of your imagintaion...</p>
+        <p>Appsus</p>
+        <p><router-link to="/book">Books</router-link></p>
+        <p><router-link to="/keep">Keep</router-link></p>
+        <p><router-link to="/mail">Mail</router-link></p>
     </div>
  </section>
 `,

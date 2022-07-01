@@ -14,12 +14,4 @@ export default{
             rate:[]
         }
     },
-    methods:{
-
-    },
-    computed:{
-
-    },
-    created(){
-    }
 }

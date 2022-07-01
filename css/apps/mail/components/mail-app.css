@@ -2,7 +2,7 @@
 
 .mail-app {
     background-color: var(--clr1);
-    /* font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif */
+    font-family:Roboto-Regular,Helvetica,Arial,sans-serif
 }
 .mail-main-container {
     min-height: calc(95vh - 11em);

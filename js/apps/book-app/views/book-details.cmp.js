@@ -4,7 +4,7 @@ import bookReview from "../cmps/book-review.cmp.js"
 export default {
     template: `
         <section v-if="book" class="book-details app-main flex align-center">
-        <router-link :to="'/book/details/' + prevBookId">Prev Book</router-link>
+        <router-link :to="'/book/details/' + prevBookId"><img src="./img/pre-arrow.png" alt="prev"></router-link>
             <article class="details-modal">
                 <router-link class="X-modal" to="/book">X</router-link>
                 <h1>{{book.title}}</h1>
@@ -21,7 +21,7 @@ export default {
                 <img :src="imgSrc"/>
             </article>
             <book-review/>
-            <router-link :to="'/book/details/' + nextBookId">Next Book</router-link>
+            <router-link :to="'/book/details/' + nextBookId"><img src="./img/next-arrow.png" alt="next"></router-link>
         </section>
     `,
     data() {
