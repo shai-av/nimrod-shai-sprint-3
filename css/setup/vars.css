@@ -1,11 +1,15 @@
 
 :root {
-    --clr1: #403042;
-    --clr2: #f0f0f0;
+    --clr1: #ffffff;
+    --clr2: #848484;
     --clr3: #fff;
     --clr4:#323232;
     --clr5:#FF5722;
     --clr6:#f0f0f0c2;
+    --clr-mail-border:#efefef;
+    --clr-mail-btn:#1a73e8;
+    --clr-mail-prev:#eceff1;
+    --clr-mail-read:#eceff1;
     
     --mobile: 850px;
 }

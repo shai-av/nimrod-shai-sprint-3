@@ -2,7 +2,7 @@
     padding:2em;
     width:100%;
     position: relative;
-    border-top: 1px solid #efefef;
+    border-top: 1px solid var(--clr-mail-border);
 }
 .read-more {
     cursor: pointer;
@@ -53,8 +53,8 @@
     font-size:1.5em;
 }
 .send-btn{
-    background-color: #1a73e8;
-    color:#ffffff;
+    background-color: var(--clr-mail-btn);
+    color:var(--clr1);
     font-size: 1.2em;
     padding:0.5em 0.8em;
     border-radius: 0.3em;

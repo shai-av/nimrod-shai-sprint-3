@@ -18,8 +18,8 @@
     cursor: pointer;
 }
 .api-search-btn{
-    background-color: #1a73e8;
-    color:#ffffff;
+    background-color: var(--clr-mail-btn);
+    color:var(--clr1);
     border-radius: 0.5em;
     padding:0.2em 0.7em;
 }
