@@ -43,6 +43,8 @@ export default {
                 this.$emit('removeMail', this.mail.id)
             } else {
                 this.mail.isDeleted = true
+                this.mail.removedAt = Date.now()
+                console.log(this.mail.removedAt)
                 mailService.save(this.mail)
             }
         },
