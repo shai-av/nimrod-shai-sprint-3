@@ -65,13 +65,13 @@ export default {
             mailService.addMail(mail).then((mail) => this.mails.push(mail))
         },
         sortMails(mails) {
-            if(this.sortyBy === 'date') return mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt)
-            else if(this.sortyBy === 'title') return mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject))
+            if (this.sortyBy === 'date') return mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt)
+            else if (this.sortyBy === 'title') return mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject))
         },
-        toggleSort(){
+        toggleSort() {
             this.$refs['sort-cont'].classList.toggle('show-content')
         },
-        setSort(val){
+        setSort(val) {
             this.sortyBy = val
         }
     },
@@ -91,8 +91,8 @@ export default {
             })
             const { type } = this.filterBy
 
-            // if (!type) return filteredMails
             if (type === 'received') filteredMails = filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted && !mail.isArchived)
+            else if (type === 'unread') filteredMails = filteredMails.filter((mail) => mail.isReceived && !mail.isRead && !mail.isDeleted && !mail.isArchived)
             else if (type === 'sent') filteredMails = filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted && !mail.isArchived)
             else if (type === 'starred') filteredMails = filteredMails.filter((mail) => mail.isStarred && !mail.isDeleted && !mail.isArchived)
             else if (type === 'archived') filteredMails = filteredMails.filter((mail) => mail.isArchived && !mail.isDeleted)
