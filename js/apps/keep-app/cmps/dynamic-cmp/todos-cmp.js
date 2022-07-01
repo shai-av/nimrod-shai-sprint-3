@@ -6,8 +6,12 @@ export default {
              <ul>
                <h3>{{info.label}}</h3>
                <li class="todo" v-for="todo in info.todos">
-                 <span v-if="!todo.isDone" @click="todo.isDone= !todo.isDone">❏</span>
-                 <span v-if="todo.isDone" @click="todo.isDone= !todo.isDone">👍</span>
+                 <!-- <span v-if="!todo.isDone" @click="todo.isDone = !todo.isDone">❏</span>
+                 <span v-if="todo.isDone" @click="todo.isDone = !todo.isDone">👍</span> -->
+
+                 <span v-if="!todo.isDone" @click="isDone(todo)">❏</span>
+                 <span v-if="todo.isDone" @click="isDone(todo)">👍</span>
+
                    <span :class="{done: todo.isDone}"  @click="editRow(todo)"> {{todo.txt}}</span>
                       </li>
                       <button v-if="editMode" @click="save()">save</button>
@@ -34,13 +38,18 @@ export default {
   },
 
   methods: {
+    isDone(row) {
+      // console.log('row', row)
+      row.isDone = !row.isDone
+      keepsService.edit(this.note)
+    },
+
     todoDone() {
       console.log('doneee')
       this.todo = 1
     },
     editRow(todoRow) {
       this.rowTodo = todoRow
-
       this.editMode = 1
     },
     save() {
@@ -57,26 +66,13 @@ export default {
     },
     addTodo() {
       if (!this.txtNewRow) return
-      var arr = this.info.todos
-      // var newTodo = {
-      //   txt: this.txtNewRow,
-      //   doneAt: null
-      // }
-      var newTodo = keepsService.getEmptyTodoNote
-      newTodo.txt = this.txtNewRow
-
-      arr.push(newTodo)
-      console.log('arr', arr)
-      this.note.info.todos = arr
-      console.log('note', this.note)
-
+      const todo = keepsService.getEmptyTodoRow()
+      todo.txt = this.txtNewRow
+      this.info.todos.push(todo)
       keepsService.edit(this.note)
 
       this.editRowMode = null
       this.txtNewRow = ''
     },
-    // computed: {
-
-    // }
   }
 }

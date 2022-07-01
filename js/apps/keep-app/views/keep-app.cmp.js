@@ -1,4 +1,5 @@
 import { keepsService } from "../services/keep-service.js"
+import { eventBus } from "../../../services/eventBus-service.js"
 import notesList from "../cmps/list.cmp.js"
 import addNote from "../cmps/add-note.js"
 
