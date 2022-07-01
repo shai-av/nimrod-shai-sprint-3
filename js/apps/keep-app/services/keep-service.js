@@ -24,6 +24,7 @@ export const keepsService = {
     getEmptyImgNote,
     getEmptyVideoNote,
     loadImageFromInput,
+    getEmptyTodoRow,
 }
 
 function getEmptyVideoNote() {
@@ -31,7 +32,8 @@ function getEmptyVideoNote() {
         id: utilService.makeId,
         type: "note-video",
         info: {
-            url: '',
+            url: 'https://www.youtube.com/embed/cL4uhaQ58Rk',
+            // url: '',
             title: ''
         }
     }
@@ -62,6 +64,14 @@ function getEmptyTxtNote() {
 
     }
 }
+
+function getEmptyTodoRow() {
+    return {
+        txt: '', doneAt: null, isDone: false
+    }
+}
+
+
 
 function getEmptyTodoNote() {
     return {
@@ -138,12 +148,14 @@ function loadImageFromInput(ev, onImageReady) {
     reader.onload = function (event) {
         var img = new Image()// Create a new html img element
         img.src = event.target.result // Set the img src to the img file we read
+
+
         //Run the callBack func , To render the img on the canvas
         img.onload = onImageReady.bind(null, img)
-        console.log('img', img);
-        imgFromUser = img
+
         // imgFlag = true
     }
+
     reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
 }
 
@@ -211,6 +223,7 @@ function getNotes() {
             type: "note-img",
             info: {
                 url: "https://img.freepik.com/free-vector/cute-cow-cartoon-illustration_50699-716.jpg?w=2000",
+                // url: "./js/apps/keep-app/img-keep/img-keep.png",
                 title: "Bobi and Me"
             },
             style: {
