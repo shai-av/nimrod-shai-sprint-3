@@ -1,0 +1,8 @@
+.book-filter {
+    margin: 0.8em 0;
+}
+
+.book-filter input:last-child {
+    margin-inline-start: 2em;
+    width: 25%;
+}

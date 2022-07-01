@@ -1,0 +1,25 @@
+.book-add{
+    margin:1em 0;
+}
+.book-add input{
+    margin-inline-end: 0.5em;
+}
+.api-books-container{
+    width:fit-content;
+    position:relative;
+}
+.api-books-container li {
+    margin-bottom:0.5em;
+}
+.api-books-container li button{
+    position: absolute;
+    right:-2em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.api-search-btn{
+    background-color: #1a73e8;
+    color:#ffffff;
+    border-radius: 0.5em;
+    padding:0.2em 0.7em;
+}

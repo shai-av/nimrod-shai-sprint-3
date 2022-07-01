@@ -10,13 +10,11 @@ export default {
       filterBy: {
         str: "",
       },
-    };
+    }
   },
   methods: {
     filter() {
-      this.$emit("getFilter", this.filterBy.str);
+      this.$emit("getFilter", this.filterBy.str)
     },
   },
-  computed: {
-  },
-};
+}

@@ -1,5 +1,5 @@
-import { mailService } from "../services/mail-service.js";
-import mailPreview from "./mail-preview.cmp.js";
+import { mailService } from "../services/mail-service.js"
+import mailPreview from "./mail-preview.cmp.js"
 
 export default {
   props: ["mails"],
@@ -16,10 +16,6 @@ export default {
   components: {
     mailPreview,
   },
-
-  data() {
-    return {};
-  },
   methods: {
     read(mail){
         mail.isRead = true
@@ -31,8 +27,4 @@ export default {
         this.$emit('removeMailLocal',mailId)
     }
   },
-  computed: {},
-  mounted(){
-    console.log(this.mails)
-  }
-};
+}

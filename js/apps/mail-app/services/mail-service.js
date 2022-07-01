@@ -1,5 +1,5 @@
 import { utilService } from '../../../services/util-service.js'
-import { storageService } from '../../../services/async-storage-service.js';
+import { storageService } from '../../../services/async-storage-service.js'
 import mailDemo from './mail-demo-data.js'
 
 export const mailService = {
@@ -10,9 +10,9 @@ export const mailService = {
     getPrevNextMailId,
     addMail,
     getEmptyMail
-};
+}
 
-const MAILS_KEY = 'mailsDB';
+const MAILS_KEY = 'mailsDB'
 const loggedinUser = {
     email: 'joe@appsus.com',
     fullname: 'Joe Appsus'

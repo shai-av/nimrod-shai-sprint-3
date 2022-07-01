@@ -8,10 +8,10 @@ export default {
  </section>
 `,
     data() {
-        return {};
+        return {}
     },
     created() { },
     methods: {},
     computed: {},
     unmounted() { },
-};
+}

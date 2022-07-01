@@ -67,7 +67,7 @@ export default {
             if (!this.newMailTo.includes('@') ||
                 this.newMailSubject === '' ||
                 this.newMailBody === '') {
-                eventBus.emit('show-msg', { txt: `missing values`, type: 'error' });
+                eventBus.emit('show-msg', { txt: `missing values`, type: 'error' })
                 return
             }
             this.mail.to = this.newMailTo
@@ -76,7 +76,7 @@ export default {
             this.mail.sentAt = Date.now()
             this.$emit('add',this.mail)
             this.$emit('back')
-            eventBus.emit('show-msg', { txt: `sent`, type: 'success' });
+            eventBus.emit('show-msg', { txt: `sent`, type: 'success' })
         }
     },
     computed: {
@@ -104,7 +104,7 @@ export default {
                 .then(mailIds => {
                     this.nextMailId = mailIds.next
                     this.prevMailId = mailIds.prev
-                }).catch(console.log('details error'))
+                })
         }
     },
     // watch:{

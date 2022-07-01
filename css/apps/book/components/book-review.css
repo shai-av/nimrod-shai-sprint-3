@@ -1,0 +1,27 @@
+.book-review{
+    /* background-color: #00000081; */
+    height: inherit;
+    flex-basis:50%;
+}
+.review-area{
+    min-height: 6em;
+    width: 20em;
+    margin-bottom:1em;
+}
+.key{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+    font-weight: 600;
+}
+.add-book{
+    margin-inline-start: 3em;
+}
+.review{
+    margin:1em 0;
+}
+.review-list{
+    list-style-type: none;
+}
+.rate-span{
+    margin-inline-start: 2em;
+}

@@ -1,6 +1,6 @@
-import { utilService } from './util-service.js'
+import { utilService } from '../../../services/util-service.js'
+import { storageService } from '../../../services/async-storage-service.js'
 import booksJson from './books-json.js'
-import { storageService } from './async-storage-service.js';
 
 export const bookService = {
     query,
@@ -10,9 +10,9 @@ export const bookService = {
     getPrevNextBookId,
     getBooksFromApi,
     addBook
-};
+}
 
-const BOOKS_KEY = 'booksDB';
+const BOOKS_KEY = 'booksDB'
 const BOOKS_SEARCH_KEY = 'booksSearchDB'
 
 if (!utilService.loadFromStorage(BOOKS_KEY)) utilService.saveToStorage(BOOKS_KEY, booksJson)
@@ -44,7 +44,7 @@ function getPrevNextBookId(bookId){
 function getBooksFromApi(val){
     let searchCache = utilService.loadFromStorage(BOOKS_SEARCH_KEY) || {}
     if(searchCache[val]){
-        console.log('from cache');
+        console.log('books from cache')
         return Promise.resolve(searchCache[val])
     }
 

@@ -1,1 +1,5 @@
 @import 'components/book-app.css';
+@import 'components/book-add.css';
+@import 'components/book-details.css';
+@import 'components/book-filter.css';
+@import 'components/book-review.css';

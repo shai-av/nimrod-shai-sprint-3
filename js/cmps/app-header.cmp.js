@@ -1,4 +1,3 @@
-import { router } from "../router.js"
 
 export default {
   template: `
@@ -11,7 +10,6 @@ export default {
                     <li><router-link to="/book">Books</router-link></li>
                     <li><router-link to="/keep">Keep</router-link></li>
                     <li><router-link to="/mail">Mail</router-link></li>
-                    <li><router-link to="/about">About</router-link></li>
                 </ul>
             </nav>
         </div>

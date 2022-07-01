@@ -1,6 +1,6 @@
 export default {
   template: `
- <section class="filter">
+ <section class="book-filter">
   <h3>filter</h3>
     <input type="text" v-model="filterBy.name" @input="filter" placeholder="Book name"/>
     <input type="range" min="0" max="200"
@@ -13,11 +13,11 @@ export default {
         name: "",
         maxPrice:200
       },
-    };
+    }
   },
   methods: {
     filter() {
-      this.$emit("filtered", this.filterBy);
+      this.$emit("filtered", this.filterBy)
     },
   },
   computed: {
@@ -25,4 +25,4 @@ export default {
       return this.filterBy.maxPrice
     }
   },
-};
+}

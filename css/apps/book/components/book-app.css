@@ -1,1 +1,82 @@
-/* ///// */
+/* book-app */
+
+.book-app {
+    min-height: calc(90vh - 2em);
+    margin-bottom: 1em;
+}
+
+.app-main {
+    min-height: calc(95vh - 7.8em);
+    background-color: var(--clr2);
+}
+
+.grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+}
+
+.grid-gallery>* {
+    border: 1px solid rgba(0, 0, 0, 0.493);
+    padding: 1em;
+}
+
+.book-preview-container {
+    position: relative;
+    background-color: var(--clr3);
+    color: var(--clr4);
+    font-weight: 500;
+    max-width: 300px;
+}
+
+.book-preview-container a {
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+    color: var(--clr3);
+    background-color: var(--clr5);
+    border-radius: 0.4em;
+    padding: 0.5em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.book-preview-container a:active {
+    color: var(--clr5);
+    background-color: var(--clr3);
+}
+
+.book-preview-container img {
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5em;
+}
+
+.book-preview-container p:first-of-type {
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.grid-gallery>* p:nth-child(1) {
+    margin-bottom: 0.5em;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.grid-gallery>* p:nth-child(2) {
+    margin-bottom: 1em;
+}
+
+.grid-gallery>* p span {
+    background-color: green;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #fff;
+    padding: 0.3em 0.5em;
+    margin-inline-start: 0.5em;
+    cursor: default;
+}
+
+.no-books-msg {
+    font-size: xx-large;
+}

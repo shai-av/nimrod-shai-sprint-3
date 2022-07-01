@@ -73,13 +73,12 @@ export default {
         },
         setSort(val){
             this.sortyBy = val
-            // this.toggleSort()
         }
     },
     computed: {
         mailsToShow() {
             if (this.filterBy.str === '' && this.filterBy.type === null) {
-                return this.sortMails(this.mails.filter((mail) => !mail.isDeleted));
+                return this.sortMails(this.mails.filter((mail) => !mail.isDeleted))
             }
 
             const filterStr = this.filterBy.str.toLowerCase().trim()
@@ -89,7 +88,7 @@ export default {
                 if (mail.to.toLowerCase().includes(filterStr)) return mail
                 if (mail.subject.toLowerCase().includes(filterStr)) return mail
                 if (mail.body.toLowerCase().includes(filterStr)) return mail
-            });
+            })
             const { type } = this.filterBy
 
             // if (!type) return filteredMails
@@ -106,7 +105,6 @@ export default {
         mailService.query().then((mails) => this.mails = mails)
 
     },
-    unmounted() { },
     components: {
         mailList,
         mailTopFilter,
@@ -114,4 +112,4 @@ export default {
         mailDetails,
         usrMsg,
     }
-};
+}
