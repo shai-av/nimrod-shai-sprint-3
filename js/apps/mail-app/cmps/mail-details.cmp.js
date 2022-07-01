@@ -1,19 +1,21 @@
 
 import { mailService } from "../services/mail-service.js"
+import { eventBus } from "../../../services/eventBus-service.js"
 
 export default {
     props: [
         'selectedMail'
     ],
     template: `
-        <section v-if="mail" class="main-container mail-details">
+        <section v-if="mail" class="mail-main-container mail-details">
         <!-- <router-link :to="'/mail/details/' + prevMailId">Prev</router-link> -->
         <!-- <router-link :to="'/mail/details/' + nextMailId">Next</router-link> -->
-        <section class=btns>
+        <section class="details-btns">
             <button v-if="mail.sentAt" @click="setPrev">prev</button>
             <button v-if="mail.sentAt" @click="setNext">next</button>
             <button @click="$emit('back')">Back</button>
         </section>
+        <p class="details-subject">{{mail.subject}}</p>
         <p class="details-from">
             <span class="details-name">{{getName}}</span>
             <span class="details-mail">&lt; {{mail.from}} ></span>
@@ -63,7 +65,7 @@ export default {
             if (!this.newMailTo.includes('@') ||
                 this.newMailSubject === '' ||
                 this.newMailBody === '') {
-                console.log('missing values');
+                eventBus.emit('show-msg', { txt: `missing values`, type: 'error' });
                 return
             }
             this.mail.to = this.newMailTo
@@ -72,6 +74,7 @@ export default {
             this.mail.sentAt = Date.now()
             this.$emit('add',this.mail)
             this.$emit('back')
+            eventBus.emit('show-msg', { txt: `sent`, type: 'success' });
         }
     },
     computed: {

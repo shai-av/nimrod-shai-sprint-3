@@ -5,9 +5,10 @@ export default {
         'mail'
     ],
     template: `
-    <div class="mail-preview flex align-center">
-        <div :class="{starred:mail.isStarred}" class="t-star" @click.stop="starMail">
-        ★
+    <div class="mail-preview flex align-center" @mouseover="isHovered = true" @mouseleave="isHovered = false">
+        <div class="t-star" @click.stop="starMail">
+        <img v-if="mail.isStarred" src="./img/star.png"/>
+        <img v-else src="./img/blank-star.png"/>
         </div>
         <div class="t-name" :class="{read:mail.isRead}">
             {{getName}}
@@ -18,14 +19,18 @@ export default {
         <div class="t-date">
             {{getDate}}
         </div>
-        <div class="t-btns">
-            <span @click.stop="deleteMail" title="delete"><img src="./img/bin.jpg" alt="dlt"/></span>
+        <div v-if="isHovered" class="t-btns">
+            <span @click.stop="deleteMail" title="delete"><img src="./img/bin1.png" alt="dlt"/></span>
+            <span v-if="!mail.isRead" @click.stop="isReadToggle" title="As read">
+                <img src="./img/as-read.png" alt="As read"/></span>
+            <span v-else @click.stop="isReadToggle" title="Unread">
+                <img src="./img/as-un-read.png" alt="Unread"/></span>
         </div>
     </div>
     `,
     data() {
         return {
-
+            isHovered:false
         }
     },
     emits: ["removeMail"],
@@ -41,6 +46,10 @@ export default {
         },
         starMail(){
             this.mail.isStarred = !this.mail.isStarred
+            mailService.save(this.mail)
+        },
+        isReadToggle(){
+            this.mail.isRead = !this.mail.isRead
             mailService.save(this.mail)
         }
     },
