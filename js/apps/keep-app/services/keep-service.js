@@ -131,6 +131,7 @@ function getPrevNextNoteId(noteId) {
         })
 }
 
+
 function loadImageFromInput(ev, onImageReady) {
     var reader = new FileReader()
     //After we read the file
