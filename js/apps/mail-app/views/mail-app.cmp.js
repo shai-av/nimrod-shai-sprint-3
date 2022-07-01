@@ -28,7 +28,7 @@ export default {
                 str: '',
                 type: 'received',
             },
-
+            sortyBy:'date'
         }
     },
     methods: {
@@ -56,6 +56,11 @@ export default {
         },
         addMail(mail) {
             mailService.addMail(mail).then((mail) => this.mails.push(mail))
+        },
+        sortMails(){
+            const mails = this.mails
+            mails.sorty((mail1,mail2)=>mail1.sentAt>mail2.sentAt)
+            return mails
         }
     },
     computed: {
@@ -73,6 +78,7 @@ export default {
                 if (mail.body.toLowerCase().includes(filterStr)) return mail
             });
             const { type } = this.filterBy
+            
             if (!type) return filteredMails
             if (type === 'received') return filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted && !mail.isArchived)
             if (type === 'sent') return filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted && !mail.isArchived)
