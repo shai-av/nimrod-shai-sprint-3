@@ -2,6 +2,7 @@
     padding:2em;
     width:100%;
     position: relative;
+    border-top: 1px solid #efefef;
 }
 .read-more {
     cursor: pointer;
@@ -11,8 +12,18 @@
     font-weight: 700;
     margin-inline-end: 0.5em;
 }
-.details-btns{
-    margin-bottom:0.7em;
+.details-actions{
+    margin-bottom:1.2em;
+}
+.details-actions span{
+    cursor: pointer;
+    margin-inline-start: 1em;
+}
+.details-actions span img{
+    width:1em;
+}
+.details-actions .back-img{
+    width:2em;
 }
 .details-from{
     margin-bottom:0.5em;
@@ -31,4 +42,20 @@
     font-weight: 600;
     font-size:1.2em;
     margin-bottom: 1em;
+}
+
+.details-txtarea{
+    border:none;
+    outline:none;
+    resize: none;
+    width:inherit;
+    height: 50%;
+    font-size:1.5em;
+}
+.send-btn{
+    background-color: #1a73e8;
+    color:#ffffff;
+    font-size: 1.2em;
+    padding:0.5em 0.8em;
+    border-radius: 0.3em;
 }

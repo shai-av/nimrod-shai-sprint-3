@@ -1,14 +1,21 @@
 .mail-preview{
-    border:1px solid #eceff1;
+    outline:1px solid #eceff1;
     background-color: #ffffff;
     font-size:1.5em;
     padding:0.5em 0;
+    transition: 0.15s;
+   
+}
+.mail-preview:hover{
+    transform: scaleY(1.1);
 }
 .t-name, .t-subject{
     font-weight: 700;
 }
 .read{
     font-weight: 400;
+}
+.mail-read{
     background-color: #f5f7f7;
 }
 
@@ -19,7 +26,7 @@
 }
 
 .t-star img{
-    width:20%;
+    width:30%;
 }
 
 .t-name{
@@ -38,9 +45,16 @@
     flex-basis:10%;
 }
 .t-btns img{
-    width:30px;
+    width:1em;
 }
 
 .t-btns span{
     margin-inline-end: 0.2em;
+    transition: 0.2s;
+}
+.t-btns span:hover{
+    background-color: rgb(201, 193, 193);
+    border-radius: 50%;
+    padding:0.3em 0.4em;
+    color:#ffffff;
 }

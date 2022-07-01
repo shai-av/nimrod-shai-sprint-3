@@ -12,7 +12,7 @@ export default {
     <mail-top-filter @getFilter="setFilterStr"></mail-top-filter>
     <div class="sub-1-mails flex">
         <div class="sub-2-mails">
-            <button @click="newMail" class="compose-btn">compose</button>
+            <button @click="newMail()" class="compose-btn">compose</button>
         <mail-side-filter @getFilter="setFilterType"/>
         </div>
         <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="addMail"/>
@@ -27,7 +27,6 @@ export default {
             filterBy: {
                 str: '',
                 type: 'received',
-
             },
 
         }
@@ -48,12 +47,15 @@ export default {
             const idx = this.mails.findIndex((mail) => mail.id === mailId)
             this.mails.splice(idx, 1)
         },
-        newMail(){
-          const mail = mailService.getEmptyMail()
-            this.selectedMail = mail
+        newMail(body='') {
+            this.selectedMail = null
+            setTimeout(() => {
+                const mail = mailService.getEmptyMail(body)
+                this.selectedMail = mail
+            },0)
         },
-        addMail(mail){
-            mailService.addMail(mail).then((mail)=> this.mails.push(mail))
+        addMail(mail) {
+            mailService.addMail(mail).then((mail) => this.mails.push(mail))
         }
     },
     computed: {
@@ -72,9 +74,10 @@ export default {
             });
             const { type } = this.filterBy
             if (!type) return filteredMails
-            if (type === 'received') return filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted)
-            if (type === 'sent') return filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted)
-            if (type === 'starred') return filteredMails.filter((mail) => mail.isStarred && !mail.isDeleted)
+            if (type === 'received') return filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted && !mail.isArchived)
+            if (type === 'sent') return filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted && !mail.isArchived)
+            if (type === 'starred') return filteredMails.filter((mail) => mail.isStarred && !mail.isDeleted && !mail.isArchived)
+            if (type === 'archived') return filteredMails.filter((mail) => mail.isArchived && !mail.isDeleted)
             if (type === 'bin') return filteredMails.filter((mail) => mail.isDeleted)
 
             return filteredMails

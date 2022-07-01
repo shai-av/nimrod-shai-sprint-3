@@ -2,8 +2,8 @@
     position: fixed;
     top: 50px;
     right: 10px;
-    background-color: lightgreen;
     padding: 10px;
+    border-radius: 1em;
 }
 
 .success {

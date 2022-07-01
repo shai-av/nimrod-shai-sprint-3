@@ -5,6 +5,7 @@ export default {
         <p @click="filter('received')" :class="{selected: selectedFilter === 'received'}">Inbox <span class="unread-count">  2</span></p>
         <p @click="filter('sent')" :class="{selected: selectedFilter === 'sent'}">Sent</p>
         <p @click="filter('starred')" :class="{selected: selectedFilter === 'starred'}">Starred</p>
+        <p @click="filter('archived')" :class="{selected: selectedFilter === 'archived'}">Archive</p>
         <p @click="filter('bin')" :class="{selected: selectedFilter === 'bin'}">Bin</p>
     </section>
     `,

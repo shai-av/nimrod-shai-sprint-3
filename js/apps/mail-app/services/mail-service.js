@@ -16,7 +16,7 @@ const MAILS_KEY = 'mailsDB';
 const loggedinUser = {
     email: 'joe@appsus.com',
     fullname: 'Joe Appsus'
-   }
+}
 
 if (!utilService.loadFromStorage(MAILS_KEY)) utilService.saveToStorage(MAILS_KEY, _prepareData(mailDemo))
 
@@ -34,46 +34,49 @@ function get(mailId) {
     return storageService.get(MAILS_KEY, mailId)
 }
 
-function getPrevNextMailId(mailId){
-        return storageService.query(MAILS_KEY)
-            .then(mails => {
-                const idx = mails.findIndex(mail => mail.id === mailId)
-                return {
-                    next:(idx < mails.length-1)? mails[idx + 1].id : mails[0].id,
-                    prev:(idx !== 0)? mails[idx - 1].id : mails[mails.length-1].id}
-            })
+function getPrevNextMailId(mailId) {
+    return storageService.query(MAILS_KEY)
+        .then(mails => {
+            const idx = mails.findIndex(mail => mail.id === mailId)
+            return {
+                next: (idx < mails.length - 1) ? mails[idx + 1].id : mails[0].id,
+                prev: (idx !== 0) ? mails[idx - 1].id : mails[mails.length - 1].id
+            }
+        })
 }
 
-function getEmptyMail(){
+function getEmptyMail(body) {
     return {
-        "id": 'e'+ utilService.makeId(3),
-        "subject": "",
-        "body": "",
-        "sentAt" : null,
+        "id": 'e' + utilService.makeId(3),
+        "subject":"",
+        "body": body,
+        "sentAt": null,
         "to": "",
-        "from":"joe@appsus.com",
+        "from": "joe@appsus.com",
         "isRead": false,
         "isReceived": false,
-        "isDeleted":false,
-        "isStarred":false,
+        "isDeleted": false,
+        "isStarred": false,
+        "isArchived":false,
     }
 }
 
-function _prepareData(items){
-    let mails = items.map((mail)=> _createMail(mail))
+function _prepareData(items) {
+    let mails = items.map((mail) => _createMail(mail))
     return mails
 }
 
-function _createMail(item){
+function _createMail(item) {
     item['isReceived'] = (item.to === loggedinUser.email)
     item['isDeleted'] = false
     item['isStarred'] = false
-    
-    return item 
+    item['isArchived'] = false
+
+    return item
 }
 
-function addMail(mail){
-   return storageService.post(MAILS_KEY,mail)
+function addMail(mail) {
+    return storageService.post(MAILS_KEY, mail)
 }
 
 
