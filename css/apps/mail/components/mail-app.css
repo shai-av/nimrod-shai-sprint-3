@@ -30,3 +30,30 @@
     box-shadow: 0px 2px 6px 0px black;
     cursor:pointer;
 }
+.sort-container{
+    position: absolute;
+    top:6em;
+    right:1em;
+    cursor: pointer;
+}
+.sort-container img{
+    width:1em;
+}
+
+.sort-values-container{
+    display: none;
+    position: absolute;
+    left:-1em;
+    background-color: #ffffff;
+    border: 1px solid #efefef;
+}
+.show-content .sort-values-container{
+    display: block;
+    z-index: 1;
+}
+
+.sort-values-container p{
+    cursor: pointer;
+    padding:0.5em 0.3;
+    border:1px solid #efefef;
+}

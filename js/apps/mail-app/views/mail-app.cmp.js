@@ -10,6 +10,13 @@ export default {
  <section v-if="mails" class="main-container mail-app">
     <usr-msg />        
     <mail-top-filter @getFilter="setFilterStr"></mail-top-filter>
+    <div ref="sort-cont" class="sort-container" @click="toggleSort">
+        <img class="sort-img" src="./img/sort-btn.png" alt="sort"/>
+        <div class="sort-values-container">
+            <p @click="setSort('date')">Date</p>
+            <p @click="setSort('title')">Titile</p>
+        </div>
+    </div>
     <div class="sub-1-mails flex">
         <div class="sub-2-mails">
             <button @click="newMail()" class="compose-btn">compose</button>
@@ -28,7 +35,7 @@ export default {
                 str: '',
                 type: 'received',
             },
-            sortyBy:'date'
+            sortyBy: 'date'
         }
     },
     methods: {
@@ -47,46 +54,52 @@ export default {
             const idx = this.mails.findIndex((mail) => mail.id === mailId)
             this.mails.splice(idx, 1)
         },
-        newMail(body='') {
+        newMail(body = '') {
             this.selectedMail = null
             setTimeout(() => {
                 const mail = mailService.getEmptyMail(body)
                 this.selectedMail = mail
-            },0)
+            }, 0)
         },
         addMail(mail) {
             mailService.addMail(mail).then((mail) => this.mails.push(mail))
         },
-        sortMails(){
-            const mails = this.mails
-            mails.sorty((mail1,mail2)=>mail1.sentAt>mail2.sentAt)
-            return mails
+        sortMails(mails) {
+            if(this.sortyBy === 'date') return mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt)
+            else if(this.sortyBy === 'title') return mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject))
+        },
+        toggleSort(){
+            this.$refs['sort-cont'].classList.toggle('show-content')
+        },
+        setSort(val){
+            this.sortyBy = val
+            // this.toggleSort()
         }
     },
     computed: {
         mailsToShow() {
             if (this.filterBy.str === '' && this.filterBy.type === null) {
-                return this.mails.filter((mail) => !mail.isDeleted);
+                return this.sortMails(this.mails.filter((mail) => !mail.isDeleted));
             }
 
             const filterStr = this.filterBy.str.toLowerCase().trim()
 
-            const filteredMails = this.mails.filter((mail) => {
+            let filteredMails = this.mails.filter((mail) => {
                 if (mail.from.toLowerCase().includes(filterStr)) return mail
                 if (mail.to.toLowerCase().includes(filterStr)) return mail
                 if (mail.subject.toLowerCase().includes(filterStr)) return mail
                 if (mail.body.toLowerCase().includes(filterStr)) return mail
             });
             const { type } = this.filterBy
-            
-            if (!type) return filteredMails
-            if (type === 'received') return filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted && !mail.isArchived)
-            if (type === 'sent') return filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted && !mail.isArchived)
-            if (type === 'starred') return filteredMails.filter((mail) => mail.isStarred && !mail.isDeleted && !mail.isArchived)
-            if (type === 'archived') return filteredMails.filter((mail) => mail.isArchived && !mail.isDeleted)
-            if (type === 'bin') return filteredMails.filter((mail) => mail.isDeleted)
 
-            return filteredMails
+            // if (!type) return filteredMails
+            if (type === 'received') filteredMails = filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted && !mail.isArchived)
+            else if (type === 'sent') filteredMails = filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted && !mail.isArchived)
+            else if (type === 'starred') filteredMails = filteredMails.filter((mail) => mail.isStarred && !mail.isDeleted && !mail.isArchived)
+            else if (type === 'archived') filteredMails = filteredMails.filter((mail) => mail.isArchived && !mail.isDeleted)
+            else if (type === 'bin') filteredMails = filteredMails.filter((mail) => mail.isDeleted)
+
+            return this.sortMails(filteredMails)
         }
     },
     created() {
