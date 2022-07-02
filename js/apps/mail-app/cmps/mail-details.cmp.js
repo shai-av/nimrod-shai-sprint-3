@@ -173,6 +173,7 @@ export default {
                     this.prevMailId = mailIds.prev
                 })
         }
+        if (this.mail.subject) this.newMailSubject = this.mail.subject
     },
     mounted() {
         if (!this.mail.sentAt) this.$refs['mail-body'].focus()

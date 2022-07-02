@@ -78,7 +78,7 @@ export default {
         },
         getDate() {
             const date = new Date(this.mail.sentAt)
-            const day = date.getDay()
+            const day = date.getDate()
             const month = date.toLocaleString('default', { month: 'long' })
 
             return `${day} ${month.substring(3, 0)}`
