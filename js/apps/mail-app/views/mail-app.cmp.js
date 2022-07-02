@@ -108,6 +108,14 @@ export default {
     created() {
         mailService.query().then((mails) => this.mails = mails)
     },
+    mounted(){
+            const subject = this.$route.params.title
+            const body = this.$route.params.content
+
+            if(subject && body){
+                this.newMail(body,subject)
+            }
+        },
     components: {
         mailList,
         mailTopFilter,
