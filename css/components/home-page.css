@@ -1,9 +1,7 @@
 .home-page {
-    /* background-image: url('../../img/homePage2.jpg'); */
-    /* background-image: url('../../img/appsus.jpeg'); */
     background-image: url('../../img/appsus2.jpeg');
-
-    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .welcome-msg {
@@ -18,4 +16,16 @@
 .welcome-msg p:first-of-type {
     font-size: 4em;
     margin-bottom: 1em;
+}
+
+.home-page .route-div{
+    padding:1em;
+    background-color: var(--clr2);
+    margin-bottom:0.5em;
+    border-radius: 0.5em;
+}
+
+.home-page a {
+    text-decoration: none;
+    color:var(--clr1);
 }
