@@ -1,6 +1,5 @@
-
 .details-modal {
-    position:relative;
+    position: relative;
     min-width: 200px;
     max-width: 700px;
     min-height: 200px;
@@ -9,7 +8,7 @@
     border: 2em solid var(--clr2);
     border-radius: 1em;
     flex-basis: 50%;
-    margin:2em 0;
+    margin: 2em 0;
     margin-inline-start: 1em;
 }
 

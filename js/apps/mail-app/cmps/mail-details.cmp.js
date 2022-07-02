@@ -73,11 +73,11 @@ export default {
             }
             this.mail.to = this.newMailTo
             this.mail.subject = this.newMailSubject
-            this.mail.body = `${this.mail.body}:| | respons: ${this.newMailBody}`
+            this.mail.body = `${this.mail.body} :| ${this.newMailBody}`
             this.mail.sentAt = Date.now()
             this.$emit('add', this.mail)
             this.$emit('back')
-            eventBus.emit('show-msg', { txt: `sent`, type: 'success' })
+            eventBus.emit('show-msg', { txt: `Mail sent`, type: 'success' })
         },
         mailReply() {
             const subject = `Re: ${this.mail.subject}`

@@ -1,62 +1,67 @@
-.mail-preview{
-    outline:1px solid var(--clr-mail-prev);
+.mail-preview {
+    outline: 1px solid var(--clr-mail-prev);
     background-color: var(--clr1);
-    font-size:1.5em;
-    padding:0.5em 0;
+    font-size: 1.5em;
+    padding: 0.5em 0;
     transition: 0.15s;
-   
 }
-.mail-preview:hover{
+
+.mail-preview:hover {
     transform: scaleY(1.1);
 }
-.t-name, .t-subject{
+
+.t-name,
+.t-subject {
     font-weight: 700;
 }
-.read{
+
+.read {
     font-weight: 400;
 }
-.mail-read{
+
+.mail-read {
     background-color: var(--clr-mail-read);
-    outline: 1px solid var(--clr1);;
+    outline: 1px solid var(--clr1);
 }
 
-.t-star{
-    width:10%;
+.t-star {
+    width: 10%;
     text-align: center;
-    font-size:large;
+    font-size: large;
 }
 
-.t-star img{
-    width:1.5em;
+.t-star img {
+    width: 1.5em;
 }
 
-.t-name{
-    width:15%;
+.t-name {
+    width: 15%;
 }
 
-.t-subject{
-    width:50%;
+.t-subject {
+    width: 50%;
 }
 
-.t-date{
-    width:10%;
+.t-date {
+    width: 10%;
 }
 
-.t-btns{
-    flex-basis:10%;
-}
-.t-btns img{
-    width:1em;
+.t-btns {
+    flex-basis: 10%;
 }
 
-.t-btns span.act-span{
+.t-btns img {
+    width: 1em;
+}
+
+.t-btns span.act-span {
     margin-inline-end: 0.2em;
     transition: 0.2s;
 }
 
-.t-btns span.act-span:hover{
-    background-color: var(--clr-mail-border);
+.t-btns span.act-span:hover {
+    background-color: var(--clr2);
     border-radius: 50%;
-    padding:0.3em 0.4em;
-    color:var(--clr1);
+    padding: 0.3em 0.4em;
+    color: var(--clr1);
 }

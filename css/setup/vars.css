@@ -1,17 +1,16 @@
-
 :root {
     --clr1: #ffffff;
-    --clr2: #848484;
+    --clr2: #a19d9d;
     --clr3: #fff;
-    --clr4:#323232;
-    --clr5:#FF5722;
-    --clr6:#f0f0f0c2;
-    --clr-mail-border:#efefef;
-    --clr-mail-btn:#1a73e8;
-    --clr-mail-prev:#eceff1;
-    --clr-mail-read:#eceff1;
-    --clr-side-filter-red:#fce8e6;
-    --clr-side-filter-font-red:#db3d33;
-    
-    --mobile: 850px;
+    --clr4: #323232;
+    --clr5: #FF5722;
+    --clr6: #f0f0f0c2;
+    --clr-mail-border: #efefef;
+    --clr-mail-btn: #1a73e8;
+    --clr-mail-prev: #eceff1;
+    --clr-mail-read: #eceff1;
+    --clr-side-filter-red: #fce8e6;
+    --clr-side-filter-font-red: #db3d33;
+
+    --me-mobile: 850px;
 }

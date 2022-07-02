@@ -24,10 +24,11 @@
 
 .api-books-container li button:hover {
     background-color: var(--clr-mail-btn);
-    color:var(--clr1)
+    color: var(--clr1)
 }
-.api-books-container li:hover{
-    outline: 1px solid var( --clr-mail-btn);
+
+.api-books-container li:hover {
+    outline: 1px solid var(--clr-mail-btn);
 }
 
 .api-search-btn {

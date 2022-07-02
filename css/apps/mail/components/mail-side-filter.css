@@ -10,17 +10,19 @@
     color: var(--clr-side-filter-font-red);
 }
 
-.mail-side-filter p{
-    border:1px solid var(--clr-mail-border);
-    padding:0.5em 0;
+.mail-side-filter p {
+    border: 1px solid var(--clr-mail-border);
+    padding: 0.5em 0;
     padding-inline-start: 0.5em;
 }
-.mail-side-filter p:first-of-type{
-    border-top:none;
+
+.mail-side-filter p:first-of-type {
+    border-top: none;
 }
-.unread-count{
+
+.unread-count {
     padding: 0.3em 0.6em;
     border-radius: 50%;
-    font-size:0.8em;
-    background-color:var(--clr-side-filter-red);
+    font-size: 0.8em;
+    background-color: var(--clr-side-filter-red);
 }

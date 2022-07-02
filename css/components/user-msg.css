@@ -1,4 +1,4 @@
-.user-msg{
+.user-msg {
     position: fixed;
     top: 50px;
     right: 10px;
@@ -10,7 +10,11 @@
     background-color: greenyellow;
 }
 
-.error{
+.error {
     background-color: red;
     color: white;
+}
+.update{
+    background-color: var(--clr2);
+    color: var(--clr1);
 }

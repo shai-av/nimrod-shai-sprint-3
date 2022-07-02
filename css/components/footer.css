@@ -3,6 +3,6 @@
     height: 5vh;
     color: var(--clr2);
     text-align: center;
-    padding:3em 0;
-    border-top:1px solid var(--clr-mail-border)
+    padding: 3em 0;
+    border-top: 1px solid var(--clr-mail-border)
 }
