@@ -8,16 +8,32 @@
     padding: .8em;
     display: flex;
     flex-wrap: wrap;
+    /* justify-content: center; */
 }
 
 .note-card {
     padding: 10px;
-    margin: 10px;
-    width: 150px;
+    margin: 3em;
+    width: 19em;
     /* height: 150px; */
     background-color: rgb(154, 172, 221);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
+}
+
+.note-card h2 {
+    padding: 1em;
+}
+
+.dynamic-content {}
+
+.todo-note {
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.todo-type {
+    /* display: block; */
 }

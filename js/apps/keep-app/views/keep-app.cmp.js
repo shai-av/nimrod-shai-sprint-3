@@ -2,22 +2,28 @@ import { keepsService } from "../services/keep-service.js"
 import { eventBus } from "../../../services/eventBus-service.js"
 import notesList from "../cmps/list.cmp.js"
 import addNote from "../cmps/add-note.js"
+import notesFilter from "../cmps/filter.cmp.js"
 
 export default {
     template: `
  <section class=" main-container ">
    <h3>keep app - welcome</h3>
+    <notes-filter @filtered="setFilter"></notes-filter>
     <add-note @saved="addNoteToDisplay"></add-note>
-   <notes-list :notes='this.notes' @remove="removeNote" ></notes-list>
+   <!-- <notes-list :notes='this.notes' @remove="removeNote" ></notes-list> -->
+   <notes-list :notes="notesToShow" @added="addNoteToDisplay" @remove="removeNote" ></notes-list>
+
  </section>
 `,
     components: {
         notesList,
-        addNote
+        addNote,
+        notesFilter,
     },
     data() {
         return {
-            notes: null
+            notes: null,
+            filterBy: null
         };
     },
 
@@ -41,9 +47,21 @@ export default {
                 // eventBus.emit('show-msg', { txt: 'Error - try again later', type: 'error' });
             })
         },
+        setFilter(filter) {
+            this.filterBy = filter
+            console.log(this.filterBy);
+            console.log(this.notes);
+        }
     },
 
-    computed: {},
+    computed: {
+        notesToShow() {
+            if (!this.filterBy) return this.notes
+            const regex = new RegExp(this.filterBy.title, "i");
+            return this.notes.filter((note) => regex.test(note.info.title)
+                && (note.type === this.filterBy.type || 'all' === this.filterBy.type))
+        }
+    },
 
     unmounted() { },
 };

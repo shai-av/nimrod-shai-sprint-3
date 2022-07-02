@@ -10,14 +10,21 @@ export default {
     template: `
     <section class="notes-list">
         <ul>
-            <li class="note-card" v-for="note in notes">
-                <component :is="note.type"  
+            <li :style="cardStyle"  class="note-card" v-for="note in notes">
+                <!-- style="background-color:note.style.backroundColor" -->
+
+                <component :is="note.type" class="dynamic-content "  
                         :info="note.info"  :note="note"
                        >
                     </component>
                     <br>
-                    <button @click="remove(note)">X</button>
-                    <edit-note :note='note' @edit="saveChangesNote"></edit-note>
+                    <div class="tools-section flex justify-center align-center">
+                        <button @click="remove(note)">X</button>
+                        <edit-note :note='note'  @edit="saveChangesNote"></edit-note>
+                
+                        <button @click="startDuplicate(note)">duplicate note</button>
+                        <input type="color"  name="txt-color" value="#ff9190" @input="setNoteColor">
+                    </div>
             </li>
         </ul>
       
@@ -32,7 +39,9 @@ export default {
     },
 
     data() {
-        return {};
+        return {
+            cardColor: 'rgb(154, 172, 221)'
+        };
     },
     methods: {
         remove(note) {
@@ -41,13 +50,27 @@ export default {
         saveChangesNote(note, txt) {
             if (note.type === 'note-txt') note.info.txt = txt
             if (note.type === 'note-img') note.info.title = txt
-            if (note.type === 'note-todos') {
-
-                note.info.todos[0].txt = txt
-            }
-
+            if (note.type === 'note-todos') note.info.todos[0].txt = txt
+            if (note.type === 'note-video') note.info.title = txt
 
             keepsService.edit(note)
+        },
+        startDuplicate(note) {
+            keepsService.add(note)
+            this.$emit("added", note)
+        },
+        setNoteColor(ev) {
+            console.log(ev.target.value)
+            this.cardColor = ev.target.value
+            // console.log(this.notes);
+
+        }
+    },
+    computed: {
+        cardStyle() {
+            return {
+                backgroundColor: this.cardColor,
+            }
         }
     },
 }

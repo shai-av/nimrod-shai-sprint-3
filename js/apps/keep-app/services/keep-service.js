@@ -32,8 +32,7 @@ function getEmptyVideoNote() {
         id: utilService.makeId,
         type: "note-video",
         info: {
-            url: 'https://www.youtube.com/embed/cL4uhaQ58Rk',
-            // url: '',
+            url: '',
             title: ''
         }
     }
@@ -59,6 +58,7 @@ function getEmptyTxtNote() {
         type: "note-txt",
         isPinned: false,
         info: {
+            title: '',
             txt: ''
         }
 
@@ -78,7 +78,7 @@ function getEmptyTodoNote() {
         id: utilService.makeId(),
         type: "note-todos",
         info: {
-            label: '',
+            title: '',
             todos: [
                 { txt: '', doneAt: null, isDone: false },
             ]
@@ -215,7 +215,11 @@ function getNotes() {
             type: "note-txt",
             isPinned: true,
             info: {
-                txt: "Fullstack Me Baby!"
+                title: 'Dont forget!',
+                txt: "go to the grocery store!"
+            },
+            style: {
+                backgroundColor: "#00d"
             }
         },
         {
@@ -227,18 +231,21 @@ function getNotes() {
                 title: "Bobi and Me"
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: "#ff9190"
             }
         },
         {
             id: "n103",
             type: "note-todos",
             info: {
-                label: "Get my stuff done",
+                title: "Get my stuff done",
                 todos: [
                     { txt: "Driving liscence", doneAt: null, isDone: false },
                     { txt: "Coding power", doneAt: 187111111, isDone: false }
                 ]
+            },
+            style: {
+                backgroundColor: "#00d"
             }
         }
 

@@ -5,15 +5,16 @@ export default {
    <section >
                 <!-- input -->
     <!-- todo -->
-       <input v-if="isTodoNote" v-model="newTodoNote.info.label" type="text" placeholder="healine">
+       <input v-if="isTodoNote" v-model="newTodoNote.info.title" type="text" placeholder="healine">
         <input v-if="isTodoNote" v-model="newTodoNote.info.todos[0].txt" type="text" placeholder="add todo">
     <!-- txt -->
+            <input v-if="isTxtNote" v-model="newTxtNote.info.title" type="text" placeholder="add title">
         <textarea v-if="isTxtNote" v-model="newTxtNote.info.txt" placeholder="add text note"></textarea>
     <!-- img -->
         <input v-if="isImgNote" v-model="newImgNote.info.title" type="text" placeholder="enter img title">
 <!-- video -->
         <input v-if="isVideoNote" v-model="newVideoNote.info.title" type="text" placeholder="enter video title">
-        <input type="file" accept="video/*" @change="onVideoSelected"> 
+       <input v-if="isVideoNote" type="text" v-model="videoUrl" placeholder="insert youtube link">
 
             <!-- buttons -->
         <button @click="txtFormat">Text Note</button>
@@ -43,6 +44,8 @@ export default {
             isVideoNote: false,
             urlImg: null,
             img: null,
+            videoUrl: null,
+
         }
     },
 
@@ -51,6 +54,7 @@ export default {
             if (!this.newTxtNote.info.txt && !this.newTodoNote.info.label
                 && !this.newTodoNote.info.todos[0].txt && !this.newImgNote.info.title
                 && !this.newVideoNote.info.title) return console.log('box is empty')
+
             if (this.isTodoNote) {
                 keepsService.add(this.newTodoNote)
                     .then((note) => {
@@ -70,9 +74,19 @@ export default {
                         this.$emit("saved", note)
                     })
             } else if (this.isVideoNote) {
+                var url = this.videoUrl
+                var id = url.substring(url.indexOf('=') + 1, url.length)
+                if (id.includes('=')) {
+                    id = id.substring(0, id.indexOf('&'))
+                }
+                this.newVideoNote.info.url = id
+
+                console.log('this.newVideoNote.info.url', this.newVideoNote.info.url)
+
                 keepsService.add(this.newVideoNote)
                     .then((note) => {
                         this.newVideoNote = keepsService.getEmptyVideoNote()
+                        this.videoUrl = null
                         this.$emit("saved", note)
                     })
             }
@@ -112,7 +126,7 @@ export default {
             this.newImgNote.info.url = src
         },
         onVideoSelected(ev) {
-            console.log(ev);
+            console.log(ev)
         }
     }
     ,
