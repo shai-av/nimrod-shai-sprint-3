@@ -11,13 +11,13 @@ const routes = [
         component: homePage
     },
     {
-        path: '/mail',
+        path: '/mail/:title?/:content?',
         component: mailApp
     },
-    {
-        path: '/mail/details/:mailId',
-        component: mailDetails
-    },
+    // {
+    //     path: '/mail/:mailObj?',
+    //     component: mailDetails
+    // },
     {
         path: '/keep',
         component: keepApp

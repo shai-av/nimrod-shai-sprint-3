@@ -1,6 +1,5 @@
 .mail-side-filter {
     color: #202124;
-    border-right: 1px solid var(--clr-mail-border);
     height: 100%;
     font-size: 1.2em;
 }
@@ -11,13 +10,10 @@
 }
 
 .mail-side-filter p {
-    border: 1px solid var(--clr-mail-border);
     padding: 0.5em 0;
     padding-inline-start: 0.5em;
-}
-
-.mail-side-filter p:first-of-type {
-    border-top: none;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
 }
 
 .unread-count {

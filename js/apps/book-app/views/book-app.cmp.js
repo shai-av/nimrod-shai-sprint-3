@@ -33,8 +33,7 @@ export default {
         },
         addToDisplay(book){
             bookService.query().then((books)=>this.books = books)
-        }
-        
+        },
     },
     computed: {
         booksToShow() {
