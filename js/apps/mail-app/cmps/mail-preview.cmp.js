@@ -6,7 +6,7 @@ export default {
         'mail'
     ],
     template: `
-    <div class="mail-preview flex align-center" :class="{'mail-read':mail.isRead}" @mouseover="isHovered = true" @mouseleave="isHovered = false">
+    <div class="mail-preview flex" :class="{'mail-read':mail.isRead}" @mouseover="isHovered = true" @mouseleave="isHovered = false">
         <div class="t-star" @click.stop="starMail">
         <img v-if="mail.isStarred" src="./img/star.png"/>
         <img v-else src="./img/blank-star.png"/>
