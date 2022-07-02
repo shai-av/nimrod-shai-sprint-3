@@ -6,10 +6,12 @@ import notesFilter from "../cmps/filter.cmp.js"
 
 export default {
     template: `
- <section class=" main-container ">
-   <h3>keep app - welcome</h3>
-    <notes-filter @filtered="setFilter"></notes-filter>
-    <add-note @saved="addNoteToDisplay"></add-note>
+ <section class=" main-container main-app-container">
+     <h3 class="welcome">keep app - welcome</h3>
+        <div class="filter-add-note">
+            <notes-filter @filtered="setFilter"></notes-filter>
+            <add-note @saved="addNoteToDisplay"></add-note>
+        </div>
    <!-- <notes-list :notes='this.notes' @remove="removeNote" ></notes-list> -->
    <notes-list :notes="notesToShow" @added="addNoteToDisplay" @remove="removeNote" ></notes-list>
 
@@ -41,7 +43,7 @@ export default {
                 console.log('Deleted successfully')
                 const idx = this.notes.findIndex((note) => note.id === noteId)
                 this.notes.splice(idx, 1);
-                eventBus.emit('show-msg', { txt: 'Deleted successfully event bus', type: 'success' });
+                eventBus.emit('show-msg', { txt: 'Note deleted successfully', type: 'success' });
             }).catch(err => {
                 console.log(err)
                 // eventBus.emit('show-msg', { txt: 'Error - try again later', type: 'error' });

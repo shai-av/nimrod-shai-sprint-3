@@ -1,7 +1,3 @@
-.note-card img {
-    height: 6em;
-}
-
 .notes-list ul {
     list-style: none;
     margin: 0;
@@ -13,10 +9,11 @@
 
 .note-card {
     padding: 10px;
-    margin: 3em;
+    margin: 1.5em;
     width: 19em;
-    /* height: 150px; */
-    background-color: rgb(154, 172, 221);
+    min-height: 21em;
+    height: fit-content;
+    background-color: rgb(231, 138, 175);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,23 +21,26 @@
 }
 
 .note-card h2 {
-    padding: 0.5em;
-}
-
-.note-card span {
-    padding: 0.6em;
-    font-size: x-large;
-}
-
-.note-card p {
-    font-size: x-large;
     padding: 1em;
+}
+
+/* to-do */
+.todo-note span {
+    margin-left: 1em;
+    font-size: x-large;
+}
+
+.todo-type p {
+    font-size: larger;
+    padding: 0.4em;
+    cursor: pointer;
 }
 
 .todo-note {
     display: flex;
     flex-direction: column;
-    text-align: lef;
+    text-align: center;
+    justify-content: center;
 }
 
 .type-new-todo {
@@ -48,9 +48,31 @@
     border-radius: 2em;
     padding: 0.2em;
     margin-top: 0.5em;
+    margin-left: 1.6em;
 }
+
+/* txt-note */
+.txt-note p {
+    font-size: x-large;
+    padding: 1em;
+}
+
+
 
 .txt-note {
     display: flex;
     flex-direction: column;
+    align-items: flex-start
+}
+
+/* img-note */
+.note-card img {
+    width: 18em;
+}
+
+/* video- note */
+
+.note-card iframe {
+    width: 100%;
+    height: 70%;
 }

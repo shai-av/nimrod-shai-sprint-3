@@ -11,6 +11,7 @@ export default {
     <section class="notes-list">
         <ul>
             <li :style="cardStyle"  class="note-card" v-for="note in notes">
+            <!-- <li :style="cardStyle"   v-for="note in notes"> -->
                 <!-- style="background-color:note.style.backroundColor" -->
 
                 <component :is="note.type" class="dynamic-content "  
@@ -19,11 +20,11 @@ export default {
                     </component>
                     <br>
                     <div class="tools-section flex justify-center align-center">
-                        <button @click="remove(note)">X</button>
-                        <edit-note :note='note'  @edit="saveChangesNote"></edit-note>
+                        <button v-if="!editMode" @click="remove(note)">X</button>
+                        <edit-note :note='note'  @edit="saveChangesNote" @startEdit="hideComponents"></edit-note>
                 
-                        <button @click="startDuplicate(note)">duplicate note</button>
-                        <input type="color"  name="txt-color" value="#ff9190" @input="setNoteColor">
+                        <button v-if="!editMode" @click="startDuplicate(note)">duplicate note</button>
+                        <input v-if="!editMode" type="color"  name="txt-color" value="#ff9190" @input="setNoteColor">
                     </div>
             </li>
         </ul>
@@ -40,20 +41,27 @@ export default {
 
     data() {
         return {
-            cardColor: 'rgb(154, 172, 221)'
+            cardColor: 'rgb(253, 227, 226)',
+            editMode: null
         };
     },
     methods: {
+        hideComponents(flag) {
+            console.log('flag', flag);
+            this.editMode = 1
+        },
         remove(note) {
             this.$emit('remove', note.id)
         },
         saveChangesNote(note, txt) {
+
             if (note.type === 'note-txt') note.info.txt = txt
             if (note.type === 'note-img') note.info.title = txt
             if (note.type === 'note-todos') note.info.todos[0].txt = txt
             if (note.type === 'note-video') note.info.title = txt
 
             keepsService.edit(note)
+            this.editMode = 0
         },
         startDuplicate(note) {
             keepsService.add(note)

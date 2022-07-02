@@ -2,20 +2,23 @@ import { keepsService } from "../services/keep-service.js"
 
 export default {
     template: `
-   <section >
+   <section class="add-note-section">
                 <!-- input -->
+    <div class="add-new-inputs">
     <!-- todo -->
-       <input v-if="isTodoNote" v-model="newTodoNote.info.title" type="text" placeholder="healine">
-        <input v-if="isTodoNote" v-model="newTodoNote.info.todos[0].txt" type="text" placeholder="add todo">
-    <!-- txt -->
-            <input v-if="isTxtNote" v-model="newTxtNote.info.title" type="text" placeholder="add title">
-        <textarea v-if="isTxtNote" v-model="newTxtNote.info.txt" placeholder="add text note"></textarea>
-    <!-- img -->
-        <input v-if="isImgNote" v-model="newImgNote.info.title" type="text" placeholder="enter img title">
-<!-- video -->
-        <input v-if="isVideoNote" v-model="newVideoNote.info.title" type="text" placeholder="enter video title">
-       <input v-if="isVideoNote" type="text" v-model="videoUrl" placeholder="insert youtube link">
-
+            <input v-if="isTodoNote" v-model="newTodoNote.info.title" type="text" placeholder="healine">
+            <input v-if="isTodoNote" v-model="newTodoNote.info.todos[0].txt" type="text" placeholder="add todo">
+        <!-- txt -->
+                <input v-if="isTxtNote" v-model="newTxtNote.info.title" type="text" placeholder="add title">
+            <textarea v-if="isTxtNote" v-model="newTxtNote.info.txt" placeholder="add text note"></textarea>
+        <!-- img -->
+            <input v-if="isImgNote" v-model="newImgNote.info.title" type="text" placeholder="enter img title">
+            <input v-if="isImgNote"  type="file" @change="onFileSelected">
+    <!-- video -->
+            <input v-if="isVideoNote" v-model="newVideoNote.info.title" type="text" placeholder="enter video title">
+        <input v-if="isVideoNote" type="text" v-model="videoUrl" placeholder="insert youtube link">
+    </div>
+    <div class="add-new-btns">
             <!-- buttons -->
         <button @click="txtFormat">Text Note</button>
 
@@ -24,10 +27,10 @@ export default {
         <button @click="imgFormat">Image note</button>
 
         <button @click="videoFormat">Video note</button>
+    </div>
 
         <button @click="addNote" type="submit">SAVE</button>
         <!-- img upload -->
-        <input v-if="isImgNote"  type="file" @change="onFileSelected">
       
        
    </section>
