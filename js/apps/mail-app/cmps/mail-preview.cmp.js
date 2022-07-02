@@ -44,16 +44,19 @@ export default {
             if (this.mail.isDeleted) {
                 mailService.remove(this.mail.id)
                 this.$emit('removeMail', this.mail.id)
+                eventBus.emit('show-msg', { txt: `mail Deleted`, type: 'success' })
             } else {
                 this.mail.isDeleted = true
                 this.mail.removedAt = Date.now()
-                console.log(this.mail.removedAt)
                 mailService.save(this.mail)
+                eventBus.emit('show-msg', { txt: `transferred to Bin`, type: 'success' })
             }
         },
         isArchivedToggle(){
             this.mail.isArchived = !this.mail.isArchived
             mailService.save(this.mail)
+            const msg = (this.mail.isArchived) ? 'Mail archived' : 'Mail un-archived'
+            eventBus.emit('show-msg', { txt: msg, type: 'success' })
         },
         starMail(){
             this.mail.isStarred = !this.mail.isStarred

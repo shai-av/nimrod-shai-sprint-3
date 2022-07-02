@@ -34,8 +34,8 @@ export default {
             </div>
         </p>
             <hr>
-            <p>{{getBody}}<span v-if="isReadMore" class="read-more" @click="userClkReadMore = true">...</span></p>
-            <textarea ref="mail-body" v-model="newMailBody" class="details-txtarea"></textarea> 
+            <p class="mail-body-txt">{{getBody}}<span v-if="isReadMore" class="read-more" @click="userClkReadMore = true">...</span></p>
+            <textarea v-if="!mail.sentAt" ref="mail-body" v-model="newMailBody" class="details-txtarea"></textarea> 
             <button v-if="!mail.sentAt" @click="sendMail" class="send-btn">Send</button>
         </section>
     `,
@@ -73,15 +73,15 @@ export default {
             }
             this.mail.to = this.newMailTo
             this.mail.subject = this.newMailSubject
-            this.mail.body = this.mail.body + this.newMailBody
+            this.mail.body = `${this.mail.body}:| | respons: ${this.newMailBody}`
             this.mail.sentAt = Date.now()
             this.$emit('add', this.mail)
             this.$emit('back')
             eventBus.emit('show-msg', { txt: `sent`, type: 'success' })
         },
         mailReply() {
-            const subject = 'Re: ' + this.mail.subject
-            const body = 'Re : ' + this.mail.body
+            const subject = `Re: ${this.mail.subject}`
+            const body = `Re : ${this.mail.body}`
             const to = this.mail.from
             this.$emit('reply', { body, subject, to })
         }
@@ -128,6 +128,9 @@ export default {
                 })
         }
     },
+    mounted() {
+        if (!this.mail.sentAt) this.$refs['mail-body'].focus()
+    }
     // watch:{
     //     '$route.params.mailId':{
     //         handler() {  

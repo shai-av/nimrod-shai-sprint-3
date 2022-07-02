@@ -1,61 +1,79 @@
-.mail-details{
-    padding:2em;
-    width:100%;
+.mail-details {
+    padding: 2em;
+    width: 100%;
     position: relative;
     border-top: 1px solid var(--clr-mail-border);
 }
+
 .read-more {
     cursor: pointer;
 }
-.details-name{
+
+.details-name {
     font-size: 1.5em;
     font-weight: 700;
     margin-inline-end: 0.5em;
 }
-.details-actions{
-    margin-bottom:1.2em;
+
+.details-actions {
+    margin-bottom: 1.2em;
 }
-.details-actions span{
+
+.details-actions span {
     cursor: pointer;
     margin-inline-start: 1em;
 }
-.details-actions span img{
-    width:1em;
+
+.details-actions span img {
+    width: 1em;
 }
-.details-actions .md-img{
-    width:2em;
+
+.details-actions .md-img {
+    width: 2em;
 }
-.details-from{
-    margin-bottom:0.5em;
+
+.details-from {
+    margin-bottom: 0.5em;
 }
-.details-to{
-    margin-bottom:0.8em;
+
+.details-to {
+    margin-bottom: 0.8em;
 }
-.details-date{
-    position:absolute;
-    right:2em;
+
+.details-date {
+    position: absolute;
+    right: 2em;
 }
-.details-inputs span:first-of-type{
-    margin-bottom:0.4em;
+
+.details-inputs span:first-of-type {
+    margin-bottom: 0.4em;
 }
-.details-subject{
+
+.details-subject {
     font-weight: 600;
-    font-size:1.2em;
+    font-size: 1.2em;
     margin-bottom: 1em;
 }
 
-.details-txtarea{
-    border:none;
-    outline:none;
+.details-txtarea {
+    border: none;
+    outline: none;
     resize: none;
-    width:inherit;
+    width: inherit;
     height: 50%;
-    font-size:1.5em;
+    font-size: 1.5em;
 }
-.send-btn{
+
+.send-btn {
     background-color: var(--clr-mail-btn);
-    color:var(--clr1);
+    color: var(--clr1);
     font-size: 1.2em;
-    padding:0.5em 0.8em;
+    padding: 0.5em 0.8em;
     border-radius: 0.3em;
+}
+
+.mail-body-txt{
+/* width:i; */
+word-break: break-all;
+white-space: normal;
 }
