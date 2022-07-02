@@ -1,10 +1,13 @@
 .home-page {
-    background-image: url('../../img/homePage2.jpg');
-    background-size: cover;
+    /* background-image: url('../../img/homePage2.jpg'); */
+    /* background-image: url('../../img/appsus.jpeg'); */
+    background-image: url('../../img/appsus2.jpeg');
+
+    /* background-size: cover; */
 }
 
 .welcome-msg {
-    background-color: var(--clr2);
+    background-color: var(--clr3);
     width: fit-content;
     margin: auto;
     padding: 4em;

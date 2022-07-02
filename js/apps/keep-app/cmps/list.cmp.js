@@ -25,7 +25,7 @@ export default {
                 
                         <button v-if="!editMode" @click="startDuplicate(note)">duplicate note</button>
                         <input v-if="!editMode" type="color"  name="txt-color" value="#ff9190" @input="setNoteColor">
-                        <span class="send-mail" @click="sendEmail(note)">📨</span>
+                        <span v-if="!editMode" class="send-mail" @click="sendEmail(note)">📨</span>
                     </div>
             </li>
         </ul>
@@ -86,7 +86,7 @@ export default {
                 }
                 content = tempTxt
             }
-            content = content.replaceAll('/','^')
+            content = content.replaceAll('/', '^')
             this.$router.push(`/mail/${noteTitle}/${content}`)
         }
     },
