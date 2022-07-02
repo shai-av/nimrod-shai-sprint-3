@@ -24,7 +24,8 @@ export default {
                         <edit-note :note='note'  @edit="saveChangesNote" @startEdit="hideComponents"></edit-note>
                 
                         <button v-if="!editMode" @click="startDuplicate(note)">duplicate note</button>
-                            <input v-if="!editMode" type="color"  name="txt-color" value="#ff9190" @input="setNoteColor">
+                        <input v-if="!editMode" type="color"  name="txt-color" value="#ff9190" @input="setNoteColor">
+                        <span class="send-mail" @click="sendEmail(note)">📨</span>
                     </div>
             </li>
         </ul>
@@ -72,6 +73,20 @@ export default {
             this.cardColor = ev.target.value
             // console.log(this.notes);
 
+        },
+        sendEmail(note) {
+
+            var noteTitle = note.info.title
+            var content = ''
+            if (note.type === 'note-txt') content = note.info.txt
+            if (note.type === 'note-todos') content = note.info.todos.txt
+            if (note.type === 'note-img') content = note.info.url
+            if (note.type === 'note-video') content = 'https://www.youtube.com/embed/' + note.info.url
+
+            console.log('send title ', noteTitle);
+            console.log('send content', content);
+
+            this.$router.push(`/mail/${noteTitle}/${content}`)
         }
     },
     computed: {
