@@ -24,7 +24,7 @@ export default {
                         <edit-note :note='note'  @edit="saveChangesNote" @startEdit="hideComponents"></edit-note>
                 
                         <button v-if="!editMode" @click="startDuplicate(note)">duplicate note</button>
-                        <input v-if="!editMode" type="color"  name="txt-color" value="#ff9190" @input="setNoteColor">
+                            <input v-if="!editMode" type="color"  name="txt-color" value="#ff9190" @input="setNoteColor">
                     </div>
             </li>
         </ul>

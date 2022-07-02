@@ -8,6 +8,7 @@ export default {
     template: `
  <section class=" main-container main-app-container">
      <h3 class="welcome">keep app - welcome</h3>
+
         <div class="filter-add-note">
             <notes-filter @filtered="setFilter"></notes-filter>
             <add-note @saved="addNoteToDisplay"></add-note>
@@ -25,7 +26,7 @@ export default {
     data() {
         return {
             notes: null,
-            filterBy: null
+            filterBy: null,
         };
     },
 
