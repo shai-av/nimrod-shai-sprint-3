@@ -24,16 +24,33 @@
 }
 
 .note-card h2 {
+    padding: 0.5em;
+}
+
+.note-card span {
+    padding: 0.6em;
+    font-size: x-large;
+}
+
+.note-card p {
+    font-size: x-large;
     padding: 1em;
 }
 
-.dynamic-content {}
-
 .todo-note {
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
+    text-align: lef;
 }
 
-.todo-type {
-    /* display: block; */
+.type-new-todo {
+    background: center;
+    border-radius: 2em;
+    padding: 0.2em;
+    margin-top: 0.5em;
+}
+
+.txt-note {
+    display: flex;
+    flex-direction: column;
 }

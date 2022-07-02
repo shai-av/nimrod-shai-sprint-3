@@ -13,14 +13,15 @@ export default {
                         <span v-if="todo.isDone" @click="isDone(todo)">👍</span>
 
                           <span :class="{done: todo.isDone}"  @click="editRow(todo)"> {{todo.txt}}</span>
-                   </div>
-                      </li>
-                      <button v-if="editMode" @click="save()">save</button>
+                        </li>
+                      </div>
+
                       <input v-if="editMode" v-model="txtRow" type="text">
+                      <button v-if="editMode" @click="save()">save</button>
 
                       <input v-if="editRowMode" v-model="txtNewRow" type="text">
                       <button v-if="editRowMode" @click="addTodo">add new todo</button>
-                      <button v-if="!editMode && !editRowMode" @click="startAddTodo">type new todo</button>
+                      <button class="type-new-todo"  v-if="!editMode && !editRowMode" @click="startAddTodo">type new todo</button>
                 </div>
              </ul>
 

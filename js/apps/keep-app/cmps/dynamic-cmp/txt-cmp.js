@@ -1,7 +1,8 @@
 export default {
   template: `
-          <section>
+          <section class="txt-note">
             <h2>{{info.title}}</h2>
+            <!-- <span>{{info.txt}}</span> -->
              <p>{{info.txt}}</p>
           </section>
           `,
