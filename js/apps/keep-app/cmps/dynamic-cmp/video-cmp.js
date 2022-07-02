@@ -1,6 +1,6 @@
 export default {
     template: `
-          <section>
+          <section >
         
              <h2>{{info.title}}</h2>
       

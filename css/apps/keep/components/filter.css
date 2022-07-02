@@ -1,0 +1,18 @@
+.notes-filter {
+    padding: 1em;
+    width: 22%;
+    border-style: solid;
+    border-color: rgb(164, 173, 174);
+    border-radius: 0.6em;
+    margin-top: 1em;
+}
+
+.notes-filter label {
+    padding-right: 0.5em;
+}
+
+.notes-filter input {
+    margin-bottom: 0.5em;
+    width: 99%;
+
+}

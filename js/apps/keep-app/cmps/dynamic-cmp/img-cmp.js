@@ -1,9 +1,9 @@
 export default {
     template: `
-          <section>
+          <section >
               <h2> {{info.title}}</h2>
              <!-- <img v-if="info" :src="imgSrc" alt=""> -->
-             <img class="" v-if="info" :src="info.url" alt=""/>
+             <img class="img" v-if="info" :src="info.url" alt=""/>
           </section>
           `,
     props: ["info"],

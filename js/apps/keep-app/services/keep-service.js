@@ -211,6 +211,32 @@ function getNotes() {
 
     return notesArray = [
         {
+            id: "n106",
+            type: "note-video",
+            info: {
+                url: "hVTXu8SgVyE",
+                title: "new-yorkk"
+            },
+            style: {
+                backgroundColor: "#ff9190"
+            }
+        },
+        {
+            id: "n103",
+            type: "note-todos",
+            info: {
+                title: "Need to buy",
+                todos: [
+                    { txt: "eggs", doneAt: null, isDone: false },
+                    { txt: "tomato", doneAt: null, isDone: false },
+                    { txt: "milk", doneAt: null, isDone: false }
+                ]
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
+        {
             id: "n101",
             type: "note-txt",
             isPinned: true,
@@ -228,27 +254,34 @@ function getNotes() {
             info: {
                 url: "https://img.freepik.com/free-vector/cute-cow-cartoon-illustration_50699-716.jpg?w=2000",
                 // url: "./js/apps/keep-app/img-keep/img-keep.png",
-                title: "Bobi and Me"
+                title: "hallo cow!"
             },
             style: {
                 backgroundColor: "#ff9190"
             }
         },
         {
-            id: "n103",
-            type: "note-todos",
+            id: "n104",
+            type: "note-video",
             info: {
-                title: "Get my stuff done",
-                todos: [
-                    { txt: "Driving liscence", doneAt: null, isDone: false },
-                    { txt: "Coding power", doneAt: 187111111, isDone: false }
-                ]
+                url: "dKzrJR2wvTA",
+                title: "Buy tickets!"
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: "#ff9190"
+            }
+        },
+        {
+            id: "n105",
+            type: "note-video",
+            info: {
+                url: "oBu-pQG6sTY",
+                title: "relax and make YOGA"
+            },
+            style: {
+                backgroundColor: "#ff9190"
             }
         }
-
 
     ]
 

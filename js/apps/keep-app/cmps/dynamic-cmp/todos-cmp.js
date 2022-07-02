@@ -7,12 +7,14 @@ export default {
                <div class = "todo-type">
                     <div class="todo-note">
                         <h2>{{info.title}}</h2>
-                        <li class="todo " v-for="todo in info.todos">
+                        <li class="todo flex" v-for="todo in info.todos">
 
-                        <span v-if="!todo.isDone" @click="isDone(todo)">❏</span>
-                        <span v-if="todo.isDone" @click="isDone(todo)">👍</span>
+                        <span class="pointer" v-if="!todo.isDone" @click="isDone(todo)">❏</span>
+                        <span class="pointer" v-if="todo.isDone" @click="isDone(todo)">👍</span>
+                         
+                         <!-- <span :class="{done: todo.isDone}"  @click="editRow(todo)"> {{todo.txt}}</span> -->
+                         <p :class="{done: todo.isDone}"  @click="editRow(todo)">{{todo.txt}}</p>
 
-                          <span :class="{done: todo.isDone}"  @click="editRow(todo)"> {{todo.txt}}</span>
                         </li>
                       </div>
 
