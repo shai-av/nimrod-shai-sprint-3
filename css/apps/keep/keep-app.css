@@ -31,6 +31,7 @@
     border-radius: 0.4em;
     border-color: bisque;
     cursor: pointer;
+    font-size: larger;
 }
 
 .main-app-container {
