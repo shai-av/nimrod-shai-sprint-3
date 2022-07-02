@@ -1,8 +1,7 @@
 export default {
     template: `
           <section>
-         <p>img-note</p>
-             <p>title:  {{info.title}}</p>
+              <h2> {{info.title}}</h2>
              <!-- <img v-if="info" :src="imgSrc" alt=""> -->
              <img class="" v-if="info" :src="info.url" alt=""/>
           </section>

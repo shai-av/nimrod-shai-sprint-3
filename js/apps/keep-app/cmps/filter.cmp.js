@@ -1,28 +1,33 @@
 export default {
   template: `
- <section class="filter">
-  <h3>filter</h3>
-    <input type="text" v-model="filterBy.name" @input="filter" placeholder="Book name"/>
-    <input type="range" min="0" max="200"
-       :title=getRangeTitle v-model="filterBy.maxPrice"  @change="filter"/>
- </section>
-`,
+   <section class="notes-filter">
+      <input type="text" v-model="filterBy.title" @input="filter" placeholder="filter by title">
+      <label for="">Filter by type</label>
+      <select @input="filter" v-model="filterBy.type">
+            <option disabled value=""></option>
+            <option>all</option>
+            <option>note-txt</option>
+            <option>note-todos</option>
+            <option>note-img</option>
+            <option>note-video</option>
+        </select>
+   </section>
+  
+  `,
   data() {
     return {
       filterBy: {
-        name: "",
-        maxPrice:200
+        title: "",
+        type: ''
       },
     };
   },
+  // created() {
+  //   this.filterBy.price = 100
+  // },
   methods: {
     filter() {
       this.$emit("filtered", this.filterBy);
     },
   },
-  computed: {
-    getRangeTitle(){
-      return this.filterBy.maxPrice
-    }
-  },
-};
+}
