@@ -45,15 +45,16 @@ function getPrevNextMailId(mailId) {
         })
 }
 
-function getEmptyMail(body) {
+function getEmptyMail(body,subject,to) {
     return {
         "id": 'e' + utilService.makeId(3),
-        "subject":"",
+        "subject":subject,
         "body": body,
         "sentAt": null,
-        "to": "",
+        "removedAt":null,
+        "to": to,
         "from": "joe@appsus.com",
-        "isRead": false,
+        "isRead": true,
         "isReceived": false,
         "isDeleted": false,
         "isStarred": false,
@@ -71,7 +72,10 @@ function _createMail(item) {
     item['isDeleted'] = false
     item['isStarred'] = false
     item['isArchived'] = false
+    item['removedAt'] = null
 
+    if(!item.isReceived) item.isRead = true
+    
     return item
 }
 

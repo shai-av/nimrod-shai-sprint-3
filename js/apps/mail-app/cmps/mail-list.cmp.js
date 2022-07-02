@@ -1,3 +1,4 @@
+import { eventBus } from "../../../services/eventBus-service.js"
 import { mailService } from "../services/mail-service.js"
 import mailPreview from "./mail-preview.cmp.js"
 
@@ -18,7 +19,10 @@ export default {
   },
   methods: {
     read(mail){
+      if(!mail.isRead){
         mail.isRead = true
+        eventBus.emit('set-unread',-1)
+      }
         mailService.save(mail)
         this.$emit('select',mail)
     },

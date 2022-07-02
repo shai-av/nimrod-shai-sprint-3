@@ -22,7 +22,7 @@ export default {
             <button @click="newMail()" class="compose-btn">compose</button>
         <mail-side-filter @getFilter="setFilterType"/>
         </div>
-        <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="addMail"/>
+        <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="sendMail" @reply="replyMail"/>
         <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" @removeMailLocal="removeFromDisplay"/>
    </div>
  </section>
@@ -54,24 +54,27 @@ export default {
             const idx = this.mails.findIndex((mail) => mail.id === mailId)
             this.mails.splice(idx, 1)
         },
-        newMail(body = '') {
+        newMail(body = '',subject='',to='') {
             this.selectedMail = null
             setTimeout(() => {
-                const mail = mailService.getEmptyMail(body)
+                const mail = mailService.getEmptyMail(body,subject,to)
                 this.selectedMail = mail
             }, 0)
         },
-        addMail(mail) {
+        replyMail({body,subject,to}){
+            this.newMail(body,subject,to)
+        },
+        sendMail(mail) {
             mailService.addMail(mail).then((mail) => this.mails.push(mail))
         },
         sortMails(mails) {
-            if(this.sortyBy === 'date') return mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt)
-            else if(this.sortyBy === 'title') return mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject))
+            if (this.sortyBy === 'date') return mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt)
+            else if (this.sortyBy === 'title') return mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject))
         },
-        toggleSort(){
+        toggleSort() {
             this.$refs['sort-cont'].classList.toggle('show-content')
         },
-        setSort(val){
+        setSort(val) {
             this.sortyBy = val
         }
     },
@@ -91,8 +94,8 @@ export default {
             })
             const { type } = this.filterBy
 
-            // if (!type) return filteredMails
             if (type === 'received') filteredMails = filteredMails.filter((mail) => mail.isReceived && !mail.isDeleted && !mail.isArchived)
+            else if (type === 'unread') filteredMails = filteredMails.filter((mail) => mail.isReceived && !mail.isRead && !mail.isDeleted && !mail.isArchived)
             else if (type === 'sent') filteredMails = filteredMails.filter((mail) => !mail.isReceived && !mail.isDeleted && !mail.isArchived)
             else if (type === 'starred') filteredMails = filteredMails.filter((mail) => mail.isStarred && !mail.isDeleted && !mail.isArchived)
             else if (type === 'archived') filteredMails = filteredMails.filter((mail) => mail.isArchived && !mail.isDeleted)

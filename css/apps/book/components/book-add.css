@@ -1,25 +1,38 @@
-.book-add{
-    margin:1em 0;
+.book-add {
+    margin: 1em 0;
 }
-.book-add input{
+
+.book-add input {
     margin-inline-end: 0.5em;
 }
-.api-books-container{
-    width:fit-content;
-    position:relative;
+
+.api-books-container {
+    width: fit-content;
+    position: relative;
 }
+
 .api-books-container li {
-    margin-bottom:0.5em;
+    margin-bottom: 0.5em;
 }
-.api-books-container li button{
+
+.api-books-container li button {
     position: absolute;
-    right:-2em;
+    right: -2em;
     border-radius: 50%;
     cursor: pointer;
 }
-.api-search-btn{
+
+.api-books-container li button:hover {
     background-color: var(--clr-mail-btn);
-    color:var(--clr1);
+    color:var(--clr1)
+}
+.api-books-container li:hover{
+    outline: 1px solid var( --clr-mail-btn);
+}
+
+.api-search-btn {
+    background-color: var(--clr-mail-btn);
+    color: var(--clr1);
     border-radius: 0.5em;
-    padding:0.2em 0.7em;
+    padding: 0.2em 0.7em;
 }

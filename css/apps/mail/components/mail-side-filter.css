@@ -6,8 +6,8 @@
 }
 
 .selected {
-    background-color: #fce8e6;
-    color: #db3d33;
+    background-color: var(--clr-side-filter-red);
+    color: var(--clr-side-filter-font-red);
 }
 
 .mail-side-filter p{
@@ -19,7 +19,8 @@
     border-top:none;
 }
 .unread-count{
-    padding-inline-start: 1em;
-    text-align: end;
+    padding: 0.3em 0.6em;
+    border-radius: 50%;
     font-size:0.8em;
+    background-color:var(--clr-side-filter-red);
 }

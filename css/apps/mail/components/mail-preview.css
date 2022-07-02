@@ -17,6 +17,7 @@
 }
 .mail-read{
     background-color: var(--clr-mail-read);
+    outline: 1px solid var(--clr1);;
 }
 
 .t-star{
@@ -48,12 +49,13 @@
     width:1em;
 }
 
-.t-btns span{
+.t-btns span.act-span{
     margin-inline-end: 0.2em;
     transition: 0.2s;
 }
-.t-btns span:hover{
-    background-color: rgb(201, 193, 193);
+
+.t-btns span.act-span:hover{
+    background-color: var(--clr-mail-border);
     border-radius: 50%;
     padding:0.3em 0.4em;
     color:var(--clr1);
