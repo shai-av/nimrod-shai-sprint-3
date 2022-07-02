@@ -20,7 +20,7 @@ export default {
             <span v-if="mail.isReceived" title="reply" @click="mailReply">
                 <img src="./img/reply.png" alt="reply" class="md-img"></span>
         </section>
-        <p class="details-subject">{{getSubject}}</p>
+        <p v-if="mail.sentAt" class="details-subject">{{getSubject}}</p>
         <p class="details-from">
             <span class="details-name">{{getName}}</span>
             <span class="details-mail">&lt; {{mail.from}} ></span>

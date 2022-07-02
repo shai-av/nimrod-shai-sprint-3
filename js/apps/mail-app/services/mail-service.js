@@ -69,10 +69,7 @@ function _prepareData(items) {
 
 function _createMail(item) {
     item['isReceived'] = (item.to === loggedinUser.email)
-    item['isDeleted'] = false
-    item['isStarred'] = false
-    item['isArchived'] = false
-    item['removedAt'] = null
+    item['id'] ='e' + utilService.makeId(3)
 
     if(!item.isReceived) item.isRead = true
     
