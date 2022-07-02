@@ -14,10 +14,6 @@ const routes = [
         path: '/mail/:title?/:content?',
         component: mailApp
     },
-    // {
-    //     path: '/mail/:mailObj?',
-    //     component: mailDetails
-    // },
     {
         path: '/keep',
         component: keepApp

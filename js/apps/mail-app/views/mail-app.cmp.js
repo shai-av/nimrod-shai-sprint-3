@@ -110,9 +110,10 @@ export default {
     },
     mounted(){
             const subject = this.$route.params.title
-            const body = this.$route.params.content
+            let body = this.$route.params.content
 
             if(subject && body){
+                body = body.replaceAll('^','/')
                 this.newMail(body,subject)
             }
         },

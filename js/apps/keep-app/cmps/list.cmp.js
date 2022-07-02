@@ -71,21 +71,22 @@ export default {
         setNoteColor(ev) {
             console.log(ev.target.value)
             this.cardColor = ev.target.value
-            // console.log(this.notes);
-
         },
         sendEmail(note) {
 
             var noteTitle = note.info.title
             var content = ''
             if (note.type === 'note-txt') content = note.info.txt
-            if (note.type === 'note-todos') content = note.info.todos.txt
             if (note.type === 'note-img') content = note.info.url
-            if (note.type === 'note-video') content = 'https://www.youtube.com/embed/' + note.info.url
-
-            console.log('send title ', noteTitle);
-            console.log('send content', content);
-
+            if (note.type === 'note-video') content = `https://www.youtube.com/embed/${note.info.url}`
+            if (note.type === 'note-todos') {
+                let tempTxt = ''
+                for (let i = 0; i < note.info.todos.length; i++) {
+                    tempTxt += (note.info.todos[i].txt + ',')
+                }
+                content = tempTxt
+            }
+            content = content.replaceAll('/','^')
             this.$router.push(`/mail/${noteTitle}/${content}`)
         }
     },
