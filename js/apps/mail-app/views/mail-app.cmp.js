@@ -22,7 +22,7 @@ export default {
             <button @click="newMail()" class="compose-btn">compose</button>
         <mail-side-filter @getFilter="setFilterType"/>
         </div>
-        <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="addMail"/>
+        <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="sendMail" @reply="replyMail"/>
         <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" @removeMailLocal="removeFromDisplay"/>
    </div>
  </section>
@@ -54,14 +54,17 @@ export default {
             const idx = this.mails.findIndex((mail) => mail.id === mailId)
             this.mails.splice(idx, 1)
         },
-        newMail(body = '') {
+        newMail(body = '',subject='',to='') {
             this.selectedMail = null
             setTimeout(() => {
-                const mail = mailService.getEmptyMail(body)
+                const mail = mailService.getEmptyMail(body,subject,to)
                 this.selectedMail = mail
             }, 0)
         },
-        addMail(mail) {
+        replyMail({body,subject,to}){
+            this.newMail(body,subject,to)
+        },
+        sendMail(mail) {
             mailService.addMail(mail).then((mail) => this.mails.push(mail))
         },
         sortMails(mails) {

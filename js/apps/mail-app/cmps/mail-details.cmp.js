@@ -15,24 +15,27 @@ export default {
                 <img src="./img/pre-arrow.png" alt="previous"></span>
             <span v-if="mail.sentAt" title="next" @click="setNext">
                 <img src="./img/next-arrow.png" alt="next"></span>
-            <span @click="$emit('back')" title="back"><img src="./img/back.png" alt="back" class="back-img"></span>
+            <span @click="$emit('back')" title="back">
+                <img src="./img/back.png" alt="back" class="md-img"></span>
+            <span v-if="mail.isReceived" title="reply" @click="mailReply">
+                <img src="./img/reply.png" alt="reply" class="md-img"></span>
         </section>
-        <p class="details-subject">{{mail.subject}}</p>
+        <p class="details-subject">{{getSubject}}</p>
         <p class="details-from">
             <span class="details-name">{{getName}}</span>
             <span class="details-mail">&lt; {{mail.from}} ></span>
         </p>
         <span v-if="mail.sentAt" class="details-date">{{getDate}}</span>
         <p class="details-to">
-            <span v-if="mail.to!==''" class="details-mail">to: &lt; {{mail.to}} ></span>
+            <span v-if="mail.to!==''" class="details-mail">to: &lt; {{getTo}} ></span>
             <div v-else class="flex flex-column details-inputs">
                 <span>to: <input type="text" v-model="newMailTo" placeholder="@"/></span>
                 <span>subject: <input type="text" v-model="newMailSubject" placeholder="subject"/></span>
             </div>
         </p>
             <hr>
-            <p v-if="mail.body">{{getBody}}<span v-if="isReadMore" class="read-more" @click="userClkReadMore = true">...</span></p>
-            <textarea v-else ref="mail-body" v-model="newMailBody" class="details-txtarea"></textarea> 
+            <p>{{getBody}}<span v-if="isReadMore" class="read-more" @click="userClkReadMore = true">...</span></p>
+            <textarea ref="mail-body" v-model="newMailBody" class="details-txtarea"></textarea> 
             <button v-if="!mail.sentAt" @click="sendMail" class="send-btn">Send</button>
         </section>
     `,
@@ -72,11 +75,17 @@ export default {
             }
             this.mail.to = this.newMailTo
             this.mail.subject = this.newMailSubject
-            this.mail.body = this.newMailBody
+            this.mail.body = this.mail.body + this.newMailBody
             this.mail.sentAt = Date.now()
-            this.$emit('add',this.mail)
+            this.$emit('add', this.mail)
             this.$emit('back')
             eventBus.emit('show-msg', { txt: `sent`, type: 'success' })
+        },
+        mailReply() {
+            const subject = 'Re: ' + this.mail.subject
+            const body = 'Re : ' + this.mail.body
+            const to = this.mail.from
+            this.$emit('reply',{body,subject,to})
         }
     },
     computed: {
@@ -93,6 +102,20 @@ export default {
         },
         getName() {
             return this.mail.from.split('@')[0]
+        },
+        getSubject() {
+            if (this.newMailSubject !== '') return this.newMailSubject
+            else{
+                this.newMailSubject = this.mail.subject
+                return this.mail.subject
+            } 
+        },
+        getTo(){
+            if (this.newMailTo !== '') return this.newMailTo
+            else{
+                this.newMailTo = this.mail.to
+                return this.mail.to
+            } 
         }
     },
     created() {

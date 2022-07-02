@@ -45,14 +45,14 @@ function getPrevNextMailId(mailId) {
         })
 }
 
-function getEmptyMail(body) {
+function getEmptyMail(body,subject,to) {
     return {
         "id": 'e' + utilService.makeId(3),
-        "subject":"",
+        "subject":subject,
         "body": body,
         "sentAt": null,
         "removedAt":null,
-        "to": "",
+        "to": to,
         "from": "joe@appsus.com",
         "isRead": true,
         "isReceived": false,
