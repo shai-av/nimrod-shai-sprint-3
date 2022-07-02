@@ -21,8 +21,8 @@ export default {
             {{getDate}}
         </div>
         <div v-if="isHovered" class="t-btns">
-        <span class="act-span" v-if="!mail.isArchived" @click.stop="isArchivedToggle" title="archive"><img src="./img/archive.png" alt="archive"/></span>
-        <span class="act-span" v-else @click.stop="isArchivedToggle" title="un-archive"><img src="./img/un-archive.png" alt="un-archive"/></span>
+            <span class="act-span" v-if="!mail.isArchived" @click.stop="isArchivedToggle" title="archive"><img src="./img/archive.png" alt="archive"/></span>
+            <span class="act-span" v-else @click.stop="isArchivedToggle" title="un-archive"><img src="./img/un-archive.png" alt="un-archive"/></span>
             <span class="act-span" @click.stop="deleteMail" title="delete"><img src="./img/bin1.png" alt="dlt"/></span>
             <span v-if="mail.isReceived">
                 <span class="act-span" v-if="!mail.isRead" @click.stop="isReadToggle" title="As read">
@@ -35,7 +35,7 @@ export default {
     `,
     data() {
         return {
-            isHovered:false
+            isHovered: false
         }
     },
     emits: ["removeMail"],
@@ -52,21 +52,21 @@ export default {
                 eventBus.emit('show-msg', { txt: `transferred to Bin`, type: 'update' })
             }
         },
-        isArchivedToggle(){
+        isArchivedToggle() {
             this.mail.isArchived = !this.mail.isArchived
             mailService.save(this.mail)
             const msg = (this.mail.isArchived) ? 'Mail archived' : 'Mail un-archived'
             eventBus.emit('show-msg', { txt: msg, type: 'update' })
         },
-        starMail(){
+        starMail() {
             this.mail.isStarred = !this.mail.isStarred
             mailService.save(this.mail)
         },
-        isReadToggle(){
+        isReadToggle() {
             this.mail.isRead = !this.mail.isRead
             mailService.save(this.mail)
-            const n = (this.mail.isRead) ? -1 : 1 
-            eventBus.emit('set-unread',n)
+            const n = (this.mail.isRead) ? -1 : 1
+            eventBus.emit('set-unread', n)
             const msg = (this.mail.isRead) ? 'Mark as read' : 'Mark as un-read'
             eventBus.emit('show-msg', { txt: msg, type: 'update' })
         }

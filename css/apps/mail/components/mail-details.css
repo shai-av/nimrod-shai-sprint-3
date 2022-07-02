@@ -76,3 +76,15 @@
     word-break: break-all;
     white-space: normal;
 }
+.details-action-btns{
+    position: absolute;
+    right:2em;
+}
+.details-action-btns span{
+    cursor: pointer;
+    margin-inline-end: 0.5em;
+}
+
+.details-action-btns img{
+    width:2em;
+}

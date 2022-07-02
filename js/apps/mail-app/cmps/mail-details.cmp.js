@@ -8,6 +8,21 @@ export default {
     ],
     template: `
         <section v-if="mail" class="mail-main-container mail-details">
+        <div v-if="mail.sentAt" class="details-action-btns">
+            <span v-if="!mail.isArchived" @click.stop="isArchivedToggle" title="archive"><img src="./img/archive.png" alt="archive"/></span>
+            <span v-else @click.stop="isArchivedToggle" title="un-archive"><img src="./img/un-archive.png" alt="un-archive"/></span>
+            <span @click.stop="deleteMail" title="delete"><img src="./img/bin1.png" alt="dlt"/></span>
+            <span v-if="mail.isReceived">
+                <span v-if="!mail.isRead" @click.stop="isReadToggle" title="As read">
+                    <img src="./img/as-read.png" alt="As read"/></span>
+                <span v-else @click.stop="isReadToggle" title="Unread">
+                    <img src="./img/as-un-read.png" alt="Unread"/></span>
+            </span>
+            <span @click.stop="starMail">
+                <img v-if="mail.isStarred" src="./img/star.png"/>
+                <img v-else src="./img/blank-star.png"/>
+            </span>
+        </div>
         <!-- <router-link :to="'/mail/details/' + prevMailId">Prev</router-link> -->
         <!-- <router-link :to="'/mail/details/' + nextMailId">Next</router-link> -->
         <section class="details-actions">
@@ -84,7 +99,38 @@ export default {
             const body = `Re : ${this.mail.body}`
             const to = this.mail.from
             this.$emit('reply', { body, subject, to })
-        }
+        },
+        isArchivedToggle() {
+            this.mail.isArchived = !this.mail.isArchived
+            mailService.save(this.mail)
+            const msg = (this.mail.isArchived) ? 'Mail archived' : 'Mail un-archived'
+            eventBus.emit('show-msg', { txt: msg, type: 'update' })
+        },
+        deleteMail() {
+            if (this.mail.isDeleted) {
+                mailService.remove(this.mail.id)
+                this.$emit('removeMail', this.mail.id)
+                eventBus.emit('show-msg', { txt: `mail Deleted`, type: 'error' })
+                this.$emit('back')
+            } else {
+                this.mail.isDeleted = true
+                this.mail.removedAt = Date.now()
+                mailService.save(this.mail)
+                eventBus.emit('show-msg', { txt: `transferred to Bin, tap again to Delete`, type: 'update' })
+            }
+        },
+        isReadToggle() {
+            this.mail.isRead = !this.mail.isRead
+            mailService.save(this.mail)
+            const n = (this.mail.isRead) ? -1 : 1
+            eventBus.emit('set-unread', n)
+            const msg = (this.mail.isRead) ? 'Mark as read' : 'Mark as un-read'
+            eventBus.emit('show-msg', { txt: msg, type: 'update' })
+        },
+        starMail() {
+            this.mail.isStarred = !this.mail.isStarred
+            mailService.save(this.mail)
+        },
     },
     computed: {
         getBody() {
