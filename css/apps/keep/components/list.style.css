@@ -76,3 +76,8 @@
     width: 100%;
     height: 70%;
 }
+
+.send-mail {
+    font-size: x-large;
+    cursor: pointer;
+}

@@ -1,2 +1,39 @@
 /* MOBILE */
-@media (max-width: 640px) {}
+@media (max-width: 540px) {
+    .main-app-container {
+        max-width: 450px;
+    }
+
+    .filter-add-note {
+        flex-direction: column;
+    }
+
+    .notes-filter input {
+        height: 2.5em;
+    }
+
+    .add-new-inputs {
+        margin-top: 0.5em;
+        margin-bottom: 1em;
+    }
+
+}
+
+/* DESKTOP */
+@media (min-width: 740px) {
+    .main-app-container {
+        max-width: 1500px;
+    }
+
+    .filter-add-note {
+        flex-direction: row-reverse;
+    }
+
+    .notes-filter {
+        width: 22%;
+    }
+
+    .notes-filter input {
+        width: 99%;
+    }
+}
