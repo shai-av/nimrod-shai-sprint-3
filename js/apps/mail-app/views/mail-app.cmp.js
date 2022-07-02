@@ -20,10 +20,12 @@ export default {
     <div class="sub-1-mails flex">
         <div class="sub-2-mails">
             <button @click="newMail()" class="compose-btn">compose</button>
-        <mail-side-filter @getFilter="setFilterType"/>
+            <mail-side-filter @getFilter="setFilterType"/>
         </div>
-        <mail-details v-if="selectedMail" :selectedMail="selectedMail" @back="selectedMail = null" @add="sendMail" @reply="replyMail"/>
-        <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" @removeMailLocal="removeFromDisplay"/>
+        <mail-details v-if="selectedMail" :selectedMail="selectedMail"
+         @back="selectedMail = null" @add="sendMail" @reply="replyMail"/>
+        <mail-list v-else :mails="mailsToShow" @select="setSelectedMail" 
+        @removeMailLocal="removeFromDisplay"/>
    </div>
  </section>
 `,
@@ -83,7 +85,6 @@ export default {
             if (this.filterBy.str === '' && this.filterBy.type === null) {
                 return this.sortMails(this.mails.filter((mail) => !mail.isDeleted))
             }
-
             const filterStr = this.filterBy.str.toLowerCase().trim()
 
             let filteredMails = this.mails.filter((mail) => {
@@ -106,7 +107,6 @@ export default {
     },
     created() {
         mailService.query().then((mails) => this.mails = mails)
-
     },
     components: {
         mailList,

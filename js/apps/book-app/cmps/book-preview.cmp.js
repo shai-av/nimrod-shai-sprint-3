@@ -1,11 +1,11 @@
 export default {
   props: ["book"],
   template: `
-  <article clas="book-card">
+    <article clas="book-card">
       <img :src="imgSrc"/>
-  <p>{{book.title}}</p>
-    <p>{{localePrice}}  <span v-if="book.listPrice.isOnSale">SALE</span></p>
-  </article>
+      <p>{{book.title}}</p>
+      <p>{{localePrice}}  <span v-if="book.listPrice.isOnSale">SALE</span></p>
+    </article>
 `,
   computed: {
     localePrice(){

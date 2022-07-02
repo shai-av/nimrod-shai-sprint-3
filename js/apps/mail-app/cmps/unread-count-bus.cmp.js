@@ -31,8 +31,6 @@ export default {
             this.unread += n
         }
     },
-    computed: {
-    },
     unmounted() {
         this.unsubscribe()
     },

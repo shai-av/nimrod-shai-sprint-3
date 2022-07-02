@@ -50,8 +50,6 @@ export default {
             newMailBody: '',
         }
     },
-    components: {
-    },
     methods: {
         setPrev() {
             mailService.get(this.prevMailId).then((mail) => this.mail = mail).then(() => this.setPrevNext())
@@ -85,7 +83,7 @@ export default {
             const subject = 'Re: ' + this.mail.subject
             const body = 'Re : ' + this.mail.body
             const to = this.mail.from
-            this.$emit('reply',{body,subject,to})
+            this.$emit('reply', { body, subject, to })
         }
     },
     computed: {
@@ -105,17 +103,17 @@ export default {
         },
         getSubject() {
             if (this.newMailSubject !== '') return this.newMailSubject
-            else{
+            else {
                 this.newMailSubject = this.mail.subject
                 return this.mail.subject
-            } 
+            }
         },
-        getTo(){
+        getTo() {
             if (this.newMailTo !== '') return this.newMailTo
-            else{
+            else {
                 this.newMailTo = this.mail.to
                 return this.mail.to
-            } 
+            }
         }
     },
     created() {

@@ -7,7 +7,8 @@ export default {
         <section v-if="book" class="book-review app-main">
             <section class="add-book">
                 <form @submit.prevent="addReview">
-                    <p><span  class="key">Name </span><input type="text" ref="nameInput" v-model="userName"/></p>
+                    <p><span  class="key">Name </span><input type="text" 
+                    ref="nameInput" v-model="userName"/></p>
                     <p><span  class="key">Review</span></p>
                     <p><textarea v-model="review" class="review-area"></textarea></p>
                     <button>Add review</button>
@@ -52,9 +53,6 @@ export default {
             this.review = ''
             this.rate = '5'
         }
-    },
-    computed: {
-
     },
     created() {
         const id = this.$route.params.bookId

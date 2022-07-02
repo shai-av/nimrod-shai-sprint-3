@@ -3,7 +3,6 @@ import bookFilter from '../cmps/book-filter.cmp.js'
 import bookList from '../cmps/book-list.cmp.js'
 import bookAdd from "../cmps/book-add.cmp.js"
 
-
 export default {
     template: `
     <section v-if="books" class="book-app main-layout app-main">
@@ -34,9 +33,7 @@ export default {
         },
         addToDisplay(book){
             bookService.query().then((books)=>this.books = books)
-            // this.books.unshift(book)
         }
-        
     },
     computed: {
         booksToShow() {

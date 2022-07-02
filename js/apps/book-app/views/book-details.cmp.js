@@ -4,24 +4,27 @@ import bookReview from "../cmps/book-review.cmp.js"
 export default {
     template: `
         <section v-if="book" class="book-details app-main flex align-center">
-        <router-link :to="'/book/details/' + prevBookId"><img src="./img/pre-arrow.png" alt="prev"></router-link>
+            <router-link :to="'/book/details/' + prevBookId"><img src="./img/pre-arrow.png" 
+            alt="prev"></router-link>
             <article class="details-modal">
                 <router-link class="X-modal" to="/book">X</router-link>
                 <h1>{{book.title}}</h1>
                 <h3>{{book.subtitle}}</h3>
-               <p><span> book Id :</span> {{book.id}}</p>
-               <p><span>authors :</span> {{book.authors.join(',')}}</p>
-               <p><span>published Date:</span> {{getPublishedDate}}</p>
-               <p><span>page count:</span> {{getPageCount}}</p>
-               <p><span>categories:</span> {{book.categories.join(', ')}}</p>
-               <p><span>language:</span> {{book.language}}</p>
-               <p><span>price :</span><span :class="priceStyle">{{localePrice}}</span></p>
+                <p><span> book Id :</span> {{book.id}}</p>
+                <p><span>authors :</span> {{book.authors.join(',')}}</p>
+                <p><span>published Date:</span> {{getPublishedDate}}</p>
+                <p><span>page count:</span> {{getPageCount}}</p>
+                <p><span>categories:</span> {{book.categories.join(', ')}}</p>
+                <p><span>language:</span> {{book.language}}</p>
+                <p><span>price :</span><span :class="priceStyle">{{localePrice}}</span></p>
                 
-                <p>{{getDescription}}<span v-if="isReadMore" class="blue read-more" @click="userClkReadMore = true">read more...</span></p>
+                <p>{{getDescription}}<span v-if="isReadMore" class="blue read-more"
+                @click="userClkReadMore = true">read more...</span></p>
                 <img :src="imgSrc"/>
             </article>
             <book-review/>
-            <router-link :to="'/book/details/' + nextBookId"><img src="./img/next-arrow.png" alt="next"></router-link>
+            <router-link :to="'/book/details/' + nextBookId"><img src="./img/next-arrow.png"
+            alt="next"></router-link>
         </section>
     `,
     data() {
@@ -34,8 +37,6 @@ export default {
     },
     components:{
         bookReview,
-    },
-    methods: {
     },
     computed: {
         getPageCount() {
@@ -71,8 +72,6 @@ export default {
             return this.book.thumbnail
           }
     },
-    created(){
-    },
     watch:{
         '$route.params.bookId':{
             handler() {
@@ -91,6 +90,4 @@ export default {
             immediate: true
         }
     }
-    
-
 }
