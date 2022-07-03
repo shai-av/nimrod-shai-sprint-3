@@ -92,8 +92,6 @@ function _createNotes() {
     if (!notes || !notes.length) {
         utilService.saveToStorage(NOTES_KEY, notesArray);
     }
-    // console.log('let notes ', notes);
-    // console.log('notesArray', notesArray);
     return notes
 }
 
@@ -119,8 +117,6 @@ function save(note) {
 
 
 function remove(noteId) {
-    // console.log('remove keepservice noteskey ', NOTES_KEY)
-    // console.log('remove keepservice noteId', noteId)
     return storageService.remove(NOTES_KEY, noteId)
 }
 
@@ -148,63 +144,13 @@ function loadImageFromInput(ev, onImageReady) {
     reader.onload = function (event) {
         var img = new Image()// Create a new html img element
         img.src = event.target.result // Set the img src to the img file we read
-
-
         //Run the callBack func , To render the img on the canvas
         img.onload = onImageReady.bind(null, img)
-
         // imgFlag = true
     }
 
     reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
 }
-
-// function getBooksFromApi(val) {
-//     let searchCache = utilService.loadFromStorage(BOOKS_SEARCH_KEY) || {}
-//     if (searchCache[val]) {
-//         console.log('from cache');
-//         return Promise.resolve(searchCache[val])
-//     }
-
-//     return axios.get(`https://www.googleapis.com/books/v1/volumes?printType=books&q=${val}`)
-//         .then((res) => res.data.items)
-//         .then((items) => {
-//             const books = _prepareData(items)
-//             searchCache[val] = books
-//             utilService.saveToStorage(BOOKS_SEARCH_KEY, searchCache)
-//             return books
-//         })
-// }
-
-// function _prepareData(items) {
-//     let books = items.map((book) => _createBook(book))
-//     return books
-// }
-
-// function _createBook(item) {
-//     return {
-//         id: item.id,
-//         title: item.volumeInfo.title,
-//         subtitle: 'subtitle',
-//         authors: item.volumeInfo.authors,
-//         categories: item.volumeInfo.categories,
-//         pageCount: item.volumeInfo.pageCount,
-//         thumbnail: item.volumeInfo.imageLinks['thumbnail'],
-//         publishedDate: item.volumeInfo.publishedDate,
-//         language: item.volumeInfo.language,
-//         description: item.volumeInfo.title,
-//         listPrice: {
-//             amount: 50,
-//             currencyCode: "EUR",
-//             isOnSale: false,
-//         }
-
-//     }
-// }
-
-// function addBook(book) {
-//     return storageService.post(BOOKS_KEY, book)
-// }
 
 
 function getNotes() {
